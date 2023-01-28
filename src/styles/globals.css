@@ -38,6 +38,9 @@
   --callout-border-rgb: 172, 175, 176;
   --card-rgb: 180, 185, 188;
   --card-border-rgb: 131, 134, 135;
+
+  --primary-font: 'Bebas Neue', cursive;
+  --secondary-font: 'Montserrat', sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -87,12 +90,6 @@ body {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
 }
 
 a {
@@ -105,21 +102,23 @@ a {
     color-scheme: dark;
   }
 }
-
+/*______________________ Navbar ______________________*/
 nav {
+  position: fixed;
+  top: 0;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 25px 30px;
+  padding: 20px 30px;
   font-weight: 600;
   /* From https://css.glass */
   background: rgba(255, 255, 255, 0.11);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(4.4px);
-  -webkit-backdrop-filter: blur(4.4px);
+  -webkit-backdrop-filter: blur(50.4px);
   border: 1px solid rgba(255, 255, 255, 0.06);
   z-index: 999;
 }
@@ -127,7 +126,7 @@ nav {
 nav h2 {
   font-size: 24px;
   margin: 0px 30px;
-  font-family: 'Bebas Neue', cursive;;
+  font-family: var(--primary-font);
 }
 
 nav ul {
@@ -138,7 +137,7 @@ nav ul {
   justify-content: center;
   gap: 30px;
   list-style: none;
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--secondary-font)
 }
 
 nav ul li {
@@ -152,7 +151,7 @@ nav ul li:hover {
 
 nav button {
   font-size: 18px;
-  background-color: lightblue;
+  background-color: skyblue;
   text-align: center;
   border-radius: 5px;
   padding: 10px 25px;
@@ -160,12 +159,12 @@ nav button {
   transition-duration: 400ms;
   transition-timing-function: ease-in-out;
   margin: 0px 30px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--secondary-font);
   font-weight: 600;
 }
 
 nav button:hover {
-  background-color: skyblue;
+  background-color: lightblue;
 }
 
 nav h2#icon_bar {
@@ -248,7 +247,7 @@ ul#mobile_nav li:hover {
 
 ul#mobile_nav button {
   font-size: 25px;
-  background-color: lightblue;
+  background-color: #a2d9ff;
   text-align: center;
   border-radius: 5px;
   padding: 10px 25px;
@@ -264,7 +263,82 @@ ul#mobile_nav button:hover {
   background-color: skyblue;
 }
 
+/*______________________ Hero ______________________*/
+div.hero-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
+  height: 100vh;
+  background-color: white;
+  padding-bottom: 20px;
+}
+
+div.hero-container div#hero-details {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px;
+}
+
+div#hero-details h2 {
+  font-size: 60px;
+  font-family: var(--primary-font);
+  font-weight: 400;
+}
+
+div#hero-details h2 span {
+  color: #a2d9ff;
+}
+
+div#hero-details p {
+  font-size: 24px;
+  font-family: var(--secondary-font);
+  font-weight: 600;
+}
+
+div#hero-details button {
+  font-size: 20px;
+  color: black;
+  font-family: var(--secondary-font);
+  background-color: #a2d9ff;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 10px 20px;
+  transition-duration: 500ms;
+  transition-timing-function: ease-in-out;
+  margin: 10px 0px;
+  font-weight: 600;
+}
+
+div#hero-details button:hover {
+  background-color: lightblue;
+}
+
+div.hero-container img {
+  width: 45%;
+  height: auto;
+
+}
+
+@media screen and (max-width: 1200px) {
+  /*____________ Hero _______________*/
+  div#hero-details h2 {
+    font-size: 50px;
+  }
+
+  div#hero-details p {
+    font-size: 20px;
+  }
+}
+
+
 @media screen and (max-width: 800px) {
+  /*________________ Navbar __________________*/
   nav {
     flex-direction: row;
   }
@@ -276,10 +350,44 @@ ul#mobile_nav button:hover {
   nav h2#icon_bar {
     display: flex;
   }
+
+  /* ___________________ Hero ____________________ */
+  div.hero-container {
+    flex-direction: column-reverse;
+    align-items: center;
+    padding-top: 0px;
+    padding-bottom: 10px;
+    height: 90vh;
+    justify-content: flex-start;
+    background-color: white;
+  }
+  div#hero-details h2 {
+    font-size: 40px;
+  }
+
+  div#hero-details p {
+    font-size: 18px;
+  }
+
+  div#hero-details button {
+    font-size: 18px;
+    padding: 7px 15px;
+  }
+
+  div.hero-container div#hero-details {
+    width: 85%;
+    text-align: center;
+    align-items: center;
+  }
+
+  div.hero-container img {
+    width: 70%;
+    height: auto;
+  }
 }
 
 @media screen and (max-width: 500px) {
-
+  /*______________ Navbar _______________*/
   div#mobile {
     padding: 20px;
   }
@@ -291,6 +399,24 @@ ul#mobile_nav button:hover {
   div#mobile ul button {
     font-size: 18px;
     padding: 8px 15px;
+  }
+
+  /* ____________________ hero ____________________*/
+  div#hero-details h2 {
+    font-size: 30px;
+  }
+
+  div#hero-details p {
+    font-size: 16px;
+  }
+
+  div#hero-details button {
+    font-size: 16px;
+    padding: 5px 10px;
+  }
+
+  div.hero-container img {
+    width: 75%;
   }
 }
 
