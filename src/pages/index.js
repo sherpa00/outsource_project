@@ -3,6 +3,7 @@ import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
 import Hero from '@/components/hero'
 import TrustedBy from '@/components/trustedBy'
+import Services from '@/components/services'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,6 +21,7 @@ export default function Home() {
       <main className={styles.main}>
           <Hero />
           <TrustedBy />
+          <Services />
       </main>
     </>
   )

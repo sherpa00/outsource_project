@@ -22,11 +22,12 @@ function TrustedBy() {
                     <span>&#127757;</span>
                 </li>
                 <li>
-                    <h4>Servicers</h4>
+                    <h4>Workers</h4>
                     <h3>50+</h3>
                     <span>&#128119;</span>
                 </li>
             </ul>
+            
         </div>
     )
 }
