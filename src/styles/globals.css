@@ -41,6 +41,9 @@
 
   --primary-font: 'Bebas Neue', cursive;
   --secondary-font: 'Montserrat', sans-serif;
+
+  --primary-color: #a2d9ff;
+  --secondary-color: skyblue;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -151,7 +154,7 @@ nav ul li:hover {
 
 nav button {
   font-size: 18px;
-  background-color: skyblue;
+  background-color: var(--primary-color);
   text-align: center;
   border-radius: 5px;
   padding: 10px 25px;
@@ -164,7 +167,7 @@ nav button {
 }
 
 nav button:hover {
-  background-color: lightblue;
+  background-color: var(--secondary-color);
 }
 
 nav h2#icon_bar {
@@ -247,7 +250,7 @@ ul#mobile_nav li:hover {
 
 ul#mobile_nav button {
   font-size: 25px;
-  background-color: #a2d9ff;
+  background-color: var(--primary-color);
   text-align: center;
   border-radius: 5px;
   padding: 10px 25px;
@@ -260,7 +263,7 @@ ul#mobile_nav button {
 }
 
 ul#mobile_nav button:hover {
-  background-color: skyblue;
+  background-color: var(--secondary-color);
 }
 
 /*______________________ Hero ______________________*/
@@ -292,7 +295,7 @@ div#hero-details h2 {
 }
 
 div#hero-details h2 span {
-  color: #a2d9ff;
+  color: var(--primary-color);
 }
 
 div#hero-details p {
@@ -305,7 +308,7 @@ div#hero-details button {
   font-size: 20px;
   color: black;
   font-family: var(--secondary-font);
-  background-color: #a2d9ff;
+  background-color: var(--primary-color);
   border-radius: 5px;
   cursor: pointer;
   padding: 10px 20px;
@@ -316,14 +319,85 @@ div#hero-details button {
 }
 
 div#hero-details button:hover {
-  background-color: lightblue;
+  background-color: var(--secondary-color);
 }
 
 div.hero-container img {
-  width: 45%;
+  width: 40%;
   height: auto;
+}
+
+/* ____________________ Trusted-by __________________ */
+div#trustedby-container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-color);
+  padding: 100px 10px;
+  margin: auto;
+  text-align: center;
+}
+
+div#trustedby-container h2 {
+  font-size: 60px;
+  font-family: var(--primary-font);
+  width: 65%;
+  margin: auto;
+  font-weight: 700;
+}
+
+div#trustedby-container p {
+  font-size: 20px;
+  font-family: var(--secondary-font);
+  width: 85%;
+  margin: 10px auto;
+  font-weight:600;
+}
+
+div#trustedby-container ul {
+  width: 100%;
+  padding: 10px;
+  margin-top: 80px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  list-style: none;
+}
+
+div#trustedby-container ul li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--primary-font);
+  text-align: center;
+}
+
+div#trustedby-container ul li h3 {
+  font-size: 60px;
+  color: rebeccapurple;
+  font-weight: 700;
 
 }
+
+div#trustedby-container ul li h4 {
+  font-size: 30px;
+  text-transform: capitalize;
+  font-weight: 600;
+  color:#00000090;
+}
+
+div#trustedby-container ul li span {
+  font-size: 40px;
+}
+
+
+
 
 @media screen and (max-width: 1200px) {
   /*____________ Hero _______________*/
@@ -333,6 +407,27 @@ div.hero-container img {
 
   div#hero-details p {
     font-size: 20px;
+  }
+  /* _________ Trustedby ____________ */
+
+  div#trustedby-container h2 {
+    font-size: 50px;
+  }
+
+  div#trustedby-container p {
+    font-size: 18px;
+  }
+
+  div#trustedby-container ul li h3 {
+    font-size: 50px;
+  }
+
+  div#trustedby-container ul li h4 {
+    font-size: 26px;
+  }
+
+  div#trustedby-container ul li span {
+    font-size: 35px;
   }
 }
 
@@ -384,6 +479,33 @@ div.hero-container img {
     width: 70%;
     height: auto;
   }
+
+  /* ________________ Trusted by _____________ */
+  div#trustedby-container h2 {
+    font-size: 40px;
+    width: 70%;
+  }
+
+  div#trustedby-container p {
+    font-size: 16px;
+  }
+
+  div#trustedby-container ul {
+    margin-top: 50px;
+  }
+
+  div#trustedby-container ul li h3 {
+    font-size: 35px;
+  }
+
+  div#trustedby-container ul li h4 {
+    font-size: 22px;
+  }
+
+  div#trustedby-container ul li span {
+    font-size: 30px;
+  }
+  
 }
 
 @media screen and (max-width: 500px) {
@@ -417,6 +539,28 @@ div.hero-container img {
 
   div.hero-container img {
     width: 75%;
+  }
+
+  /* ________________ Trusted by _____________ */
+  div#trustedby-container h2 {
+    font-size: 24px;
+    width: 80%;
+  }
+
+  div#trustedby-container p {
+    font-size: 14px;
+  }
+
+  div#trustedby-container ul li h3 {
+    font-size: 24px;
+  }
+
+  div#trustedby-container ul li h4 {
+    font-size: 16px;
+  }
+
+  div#trustedby-container ul li span {
+    font-size: 24px;
   }
 }
 
