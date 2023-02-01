@@ -27,7 +27,6 @@ function TrustedBy() {
                     <span>&#128119;</span>
                 </li>
             </ul>
-            
         </div>
     )
 }

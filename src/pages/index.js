@@ -4,6 +4,7 @@ import styles from '@/styles/Home.module.css'
 import Hero from '@/components/hero'
 import TrustedBy from '@/components/trustedBy'
 import Services from '@/components/services'
+import AboutUs from '@/components/aboutUs'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -22,6 +23,7 @@ export default function Home() {
           <Hero />
           <TrustedBy />
           <Services />
+          <AboutUs />
       </main>
     </>
   )

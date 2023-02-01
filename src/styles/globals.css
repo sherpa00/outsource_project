@@ -483,6 +483,62 @@ div.service h3 {
   font-weight: 400;
 }
 
+/* __________________ About us _____________________ */
+div#aboutus-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 10px;
+  background-color: var(--primary-color);
+  gap: 20px;
+}
+
+div#aboutus-container div#aboutus-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  width: 50%;
+}
+
+div#aboutus-details h2 {
+  font-size: 50px;
+  font-family: var(--primary-font);
+  font-weight: 800;
+}
+
+div#aboutus-details p {
+  font-size: 20px;
+  font-family: var(--secondary-font);
+  font-weight: 600;
+}
+
+div#aboutus-details button {
+  font-size: 20px;
+  font-weight: 600;
+  font-family: var(--secondary-font);
+  padding: 10px 20px;
+  cursor: pointer;
+  text-align: center;
+  width: auto;
+  background-color: whitesmoke;
+  transition-duration: 500ms;
+  transition-timing-function: ease-in-out;
+  border-radius: 5px;
+  margin-top: 10px
+}
+
+div#aboutus-details button:hover {
+  background-color: var(--secondary-color);
+}
+
+div#aboutus-container img {
+  width: 35%;
+  height: auto;
+}
+
 @media screen and (max-width: 1200px) {
   /*____________ Hero _______________*/
   div#hero-details h2 {
@@ -532,6 +588,19 @@ div.service h3 {
   }
 
   div.service h3 {
+    font-size: 18px;
+  }
+
+  /* __________________ About us _____________________ */
+  div#aboutus-details h2 {
+    font-size: 40px;
+  }
+
+  div#aboutus-details p {
+    font-size: 18px;
+  }
+
+  div#aboutus-details button {
     font-size: 18px;
   }
 }
@@ -636,7 +705,40 @@ div.service h3 {
   div.service h3 {
     font-size: 16px;
   }
+
+  /* __________________ About us _____________________ */
+  div#aboutus-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  div#aboutus-container div#aboutus-details {
+    width: 80%;
+    align-items: center;
+  }
+
+  div#aboutus-details h2 {
+    font-size: 30px;
+  }
+
+  div#aboutus-details p {
+    font-size: 16px;
+  }
+
+  div#aboutus-details button {
+    font-size: 16px;
+    padding: 7px 15px;
+  }
+
+  div#aboutus-container img {
+    width: 40%;
+    margin-top: 20px;
+  }
 }
+
+
 
 @media screen and (max-width: 500px) {
   /*______________ Navbar _______________*/
@@ -730,6 +832,20 @@ div.service h3 {
 
   div.service h3 {
     font-size: 16px;
+  }
+
+  /* __________________ About us _____________________ */
+  div#aboutus-details h2 {
+    font-size: 24px;
+  }
+
+  div#aboutus-details p {
+    font-size: 14px;
+  }
+
+  div#aboutus-details button {
+    font-size: 14px;
+    padding: 5px 10px;
   }
 }
 
