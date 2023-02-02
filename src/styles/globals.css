@@ -589,15 +589,27 @@ div#pricing-list div.pricing {
 }
 
 div.pricing div.pricing-details {
-  border-radius: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
-  background-color: #a2d9ff;
   font-family: var(--primary-font);
   padding: 20px 0px;
+}
+
+div.basic div.pricing-details {
+  background-color: #0693E3;
+}
+
+div.standard div.pricing-details {
+  background-color: #00D084;
+}
+
+div.premium div.pricing-details {
+  background-color: #9900EF;
 }
 
 div.pricing-details h3 {
@@ -718,6 +730,35 @@ div.pricing button:hover {
   }
 
   div#aboutus-details button {
+    font-size: 18px;
+  }
+
+  /* _________________ pricing ________________ */
+  div#pricing-container h2 {
+    font-size: 40px;
+  }
+
+  div#pricing-container p {
+    font-size: 18px;
+  }
+
+  div.pricing {
+    width: 270px;
+  }
+
+  div.pricing div.pricing-details h3 {
+    font-size: 35px;
+  }
+
+  div.pricing-details h4 {
+    font-size: 50px;
+  }
+
+  div.pricing-details h5 {
+    font-size: 27px;
+  }
+
+  div#pricing-container button {
     font-size: 18px;
   }
 }
@@ -853,6 +894,45 @@ div.pricing button:hover {
     width: 40%;
     margin-top: 20px;
   }
+
+  /* ________________ Pricing ____________ */
+  div#pricing-container h2 {
+    font-size: 30px;
+  }
+
+  div#pricing-container p {
+    font-size: 16px;
+  }
+
+  div#pricing-container div#pricing-list {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  div#pricing-list div.pricing {
+    width: 80%;
+  }
+
+  div.pricing-details h3 {
+    font-size: 30px;
+  }
+  
+  div.pricing-details h4 {
+    font-size: 40px;
+  }
+  
+  div.pricing-details h5 {
+    font-size: 24px;
+  }
+
+  div.pricing ul li {
+    font-size: 16px;
+  }
+
+  div#pricing-container button {
+    font-size: 16px;
+  }
 }
 
 
@@ -963,6 +1043,40 @@ div.pricing button:hover {
   div#aboutus-details button {
     font-size: 14px;
     padding: 5px 10px;
+  }
+
+  /* ________________ Pricing ____________ */
+  div#pricing-container h2 {
+    font-size: 24px;
+  }
+
+  div#pricing-container p {
+    font-size: 14px;
+  }
+
+  div#pricing-list div.pricing {
+    width: 90%;
+  }
+
+  div.pricing-details h3 {
+    font-size: 25px;
+  }
+  
+  div.pricing-details h4 {
+    font-size: 30px;
+  }
+  
+  div.pricing-details h5 {
+    font-size: 20px;
+  }
+
+  div.pricing ul li {
+    font-size: 14px;
+  }
+
+  div#pricing-container button {
+    font-size: 14px;
+    padding: 5px 0px;
   }
 }
 
