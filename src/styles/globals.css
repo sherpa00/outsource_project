@@ -738,6 +738,95 @@ details p {
   border-radius: 10px;
 }
 
+/* _______________________ Contact Us _____________ */
+div#contactus-container {
+  padding: 20px 0px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+div#contactus-container h2 {
+  margin-top: 50px;
+  font-size: 50px;
+  font-family: var(--primary-font);
+  font-weight: 800;
+}
+
+div#contactus-container div#contactus-list {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  margin: 10px auto;
+}
+
+div#contactus-list div#contact-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+  width: 50%;
+}
+
+div#contact-details ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+div#contact-details ul li {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  font-family: var(--primary-font);
+  gap: 15px;
+}
+
+div#contact-details ul li span {
+  font-size: 24px;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  padding: 10px;
+}
+
+div#contact-details ul li div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+}
+
+div#contact-details ul li div p {
+  font-size: 16px;
+  font-weight: 400;
+  color: #00000090;
+}
+
+div#contact-details ul li div strong {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+div#contact-details img {
+  width: 100%;
+  height: auto;
+  margin: 10px;
+  margin-top: 20px;
+  border-radius: 5pxs;
+  cursor: pointer;
+  transition-duration: 400ms;
+  transition-timing-function: ease-in-out;
+}
+
+div#contact-details img:hover {
+  filter: brightness(0.5);
+  transform: scale(0.99);
+}
+
 
 @media screen and (max-width: 1200px) {
   /*____________ Hero _______________*/
@@ -843,6 +932,23 @@ details p {
   }
 
   div#faq-container div#faq-list details p {
+    font-size: 18px;
+  }
+
+  /* ________________ contact us ___________________ */
+  div#contactus-container h2 {
+    font-size: 40px;
+  }
+
+  div#contactus-container div#contactus-list div#contact-details ul li span {
+    font-size: 22px;
+  }
+
+  div#contact-details ul li div p {
+    font-size: 16px;
+  }
+
+  div#contact-details ul li div strong {
     font-size: 18px;
   }
 }
@@ -1036,6 +1142,40 @@ details p {
     font-size: 16px;
     padding: 20px;
   }
+
+  /* ________________ contact us ___________________ */
+  div#contactus-container h2 {
+    font-size: 30px;
+  }
+
+  div#contactus-container div#contactus-list {
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+  }
+
+  div#contactus-list div#contact-details {
+    width: 100%;
+    padding: 0px;
+  }
+
+  div#contact-details img {
+    width: 99%;
+    padding: 0px;
+    margin: 10px auto;
+  }
+
+  div#contactus-container div#contactus-list div#contact-details ul li span {
+    font-size: 20px;
+  }
+
+  div#contact-details ul li div p {
+    font-size: 16px;
+  }
+
+  div#contact-details ul li div strong {
+    font-size: 18px;
+  }
 }
 
 
@@ -1193,13 +1333,30 @@ details p {
   }
 
   div#faq-container div#faq-list details summary {
-    font-size: 18px;
+    font-size: 16px;
     padding: 7px 10px;
   }
 
   div#faq-container div#faq-list details p {
     font-size: 14px;
     padding: 10px;
+  }
+
+  /* ________________ contact us ___________________ */
+  div#contactus-container h2 {
+    font-size: 24px;
+  }
+
+  div#contactus-container div#contactus-list div#contact-details ul li span {
+    font-size: 18px;
+  }
+
+  div#contact-details ul li div p {
+    font-size: 14px;
+  }
+
+  div#contact-details ul li div strong {
+    font-size: 16px;
   }
 }
 
