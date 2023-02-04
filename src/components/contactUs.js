@@ -4,6 +4,7 @@ import { useState } from "react";
 function ContactUs() {
     return (
         <div id="contactus-container">
+            
             <div id="contactus-list">
                 <div id="contact-details">
                 <h2>Contact Us</h2>
@@ -59,6 +60,13 @@ function ContactForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        let res = {
+            email: email,
+            phone: phone,
+            location: location,
+            service: service
+        }
+        console.log(res);
     }
 
     return (
@@ -72,23 +80,23 @@ function ContactForm() {
             <label htmlFor="email">
                 Your Email:
             </label>
-            <input type="email" id="email" name="email" placeholder="wxy@gmail.com" required />
+            <input type="email" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="wxy@gmail.com" required />
             <label htmlFor="phone">
                 Your Phone:
             </label>
-            <input type="tel" id="phone" name="phone" placeholder="450-493-4938" required />
+            <input type="tel" id="phone" name="phone" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="450-493-4938" required />
             <label htmlFor="location">
                 Your location:
             </label>
-            <input type="text" id="location" name="location" placeholder="perth city road,Perth,Au" required />
+            <input type="text" id="location" name="location" value={location} onChange={(e) => setLocation(e.target.value)} placeholder="perth city road,Perth,Au" required />
             <label htmlFor="service">
                 Select Service:
             </label>
             <select id="service" name="service">
-                <option value="cleaning">cleaning</option>
-                <option value="cleaning2">cleaning2</option>
-                <option value="cleaning3">cleaning3</option>
-                <option value="cleaning4">cleaning4</option>
+                <option value="House Cleaning">House Cleaning</option>
+                <option value="Office Cleaning2">Office Cleaning</option>
+                <option value="School Cleaning3">School Cleaning</option>
+                <option value="Hospital Cleaning4">Hospital Cleaning</option>
             </select>
             <button type="submit">
                 Submit Request

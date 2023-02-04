@@ -275,7 +275,6 @@ div.hero-container {
   width: 100%;
   gap: 10px;
   height: 100vh;
-  background-color: white;
   padding-bottom: 20px;
 }
 
@@ -832,8 +831,10 @@ div#contactus-list form {
   display: flex;
   flex-direction: column;
   width: 45%;
-  padding: 15px;
+  padding: 10px 20px;
   gap: 15px;
+  background-color: var(--primary-color);
+  border-radius: 10px;
 }
 
 div#contactus-list form h3 {
@@ -873,20 +874,75 @@ div#contactus-list select {
 }
 
 div#contactus-list form button {
-  background-color: var(--primary-color);
-  border-radius: 10px;
+  background-color: seashell;
+  border-radius: 8px;
   font-size: 20px;
   width: 100%;
   padding: 10px 0px;
   cursor: pointer;
   margin-top: 20px;
+  font-family: var(--primary-font);
+  border: 2px solid skyblue;
 }
 
 div#contactus-list form button:hover {
   background-color: var(--secondary-color);
 }
 
+/* ______________________ Footer _____________________ */
+footer {
+  background-color:var(--primary-color);
+  padding: 20px 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
 
+footer div#footer-details {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 20px;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+div#footer-details h2 {
+  font-size: 30px;
+  font-family: var(--primary-font);
+}
+
+div#footer-details ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  list-style: none;
+  font-family: var(--secondary-font);
+  font-weight: 800;
+}
+
+div#footer-details ul li {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+div#footer-details ul li:hover {
+  color: #00000070
+}
+
+footer p {
+  font-size: 16px;
+  font-weight: 200;
+  color: #00000090;
+  text-align: center;
+}
 
 
 @media screen and (max-width: 1200px) {
@@ -1034,6 +1090,15 @@ div#contactus-list form button:hover {
   }
   
   div#contactus-list form button {
+    font-size: 18px;
+  }
+
+  /* ______________________ Footer _________________ */
+  footer div#footer-details h2{
+    font-size: 26px;
+  }
+
+  div#footer-details ul li {
     font-size: 18px;
   }
 }
@@ -1264,6 +1329,7 @@ div#contactus-list form button:hover {
   div#contactus-list form {
     margin-top: 50px;
     width: 95%;
+    padding: 20px;
   }
 
   div#contactus-list form h3 {
@@ -1287,6 +1353,19 @@ div#contactus-list form button:hover {
   }
   
   div#contactus-list form button {
+    font-size: 16px;
+  }
+
+  /* ______________________ Footer _________________ */
+  footer div#footer-details h2{
+    font-size: 22px;
+  }
+
+  div#footer-details ul {
+    display:contents
+  }
+
+  div#footer-details ul li {
     font-size: 16px;
   }
 }
@@ -1473,7 +1552,7 @@ div#contactus-list form button:hover {
   div#contactus-list form {
     margin-top: 40px;
     width: 95%;
-    padding: 10px 0px;
+    padding: 10px 10px;
   }
 
   div#contactus-list form h3 {
@@ -1497,10 +1576,29 @@ div#contactus-list form button:hover {
     font-size: 14px;
     padding: 7px 0px;
   }
+
+  div#contactus-list select option {
+    font-size: 14px;
+    padding: 7px 0px;
+    width: inherit;
+  }
   
   div#contactus-list form button {
     font-size: 14px;
     padding: 7px 0px;
+  }
+
+  /* ______________________ Footer _________________ */
+  footer div#footer-details h2{
+    font-size: 20px;
+  }
+
+  footer p {
+    font-size: 14px;
+  }
+
+  div#footer-details ul li {
+    font-size: 16px;
   }
 }
 
