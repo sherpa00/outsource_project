@@ -7,7 +7,7 @@ function Footer() {
                     Logo
                 </h2>
                 <ul>
-                    <li onClick={() => window.location.reload()}>
+                    <li onClick={() => window.location = "/"}>
                         Home
                     </li>
                     <li>

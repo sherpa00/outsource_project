@@ -52,7 +52,7 @@ function ContactUs() {
     )
 }
 
-function ContactForm() {
+export function ContactForm() {
     const [email,setEmail] = useState("");
     const [phone,setPhone] = useState("");
     const [location,setLocation] = useState("");
