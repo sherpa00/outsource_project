@@ -53,26 +53,26 @@ function Navbar() {
             </h2>
             <ul id="mobile_nav">
                     <li>
-                        <Link href="/">
+                        <Link href="/" onClick={handleHideNav}>
                             Home
                         </Link>
                     </li>
                     <li>
-                        <Link href="/services">
+                        <Link href="/services" onClick={handleHideNav}>
                             Services
                         </Link>
                     </li>
                     <li>
-                        <Link href="/about-us">
+                        <Link href="/about-us" onClick={handleHideNav}>
                             About us
                         </Link>
                     </li>
                     <li>
-                        <Link href="/contact-us">
+                        <Link href="/contact-us" onClick={handleHideNav}>
                             Contact us
                         </Link>
                     </li>
-                    <button>
+                    <button >
                         Booking
                     </button>
                 </ul>
