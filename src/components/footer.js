@@ -1,34 +1,40 @@
+import Link from "next/link";
+
 function Footer() {
 
     return (
         <footer>
             <div id="footer-details">
                 <h2>
-                    Logo
+                    <Link href="/">
+                        LOGO
+                    </Link>
                 </h2>
                 <ul>
-                    <li onClick={() => window.location = "/"}>
-                        Home
+                    <li>
+                        <Link href="/">
+                            Home
+                        </Link>
                     </li>
                     <li>
-                        <a href="/services">
+                        <Link href="/services">
                             Service
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a href="/about-us">
+                        <Link href="/about-us">
                             About Us
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a href="#contact-us">
+                        <Link href="/contact-us">
                             Contact us
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a href="/reviews">
+                        <Link href="/reviews">
                             Reviews
-                        </a>
+                        </Link>
                     </li>
                 </ul>
             </div>

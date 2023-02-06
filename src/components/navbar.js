@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { createRef } from "react";
 import {RxHamburgerMenu,RxCross1} from "react-icons/rx";
 
@@ -18,21 +19,29 @@ function Navbar() {
         <nav>
             <h2>logo</h2>
             <ul id="desktop_nav">
-                <li>
-                    Home
-                </li>
-                <li>
-                    Services
-                </li>
-                <li>
-                    About Us
-                </li>
-                <li>
-                    Contact Us
-                </li>
-                <button>
-                    Booking
-                </button>
+            <li>
+                        <Link href="/">
+                            Home
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="/services">
+                            Services
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="/about-us">
+                            About us
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="/contact-us">
+                            Contact us
+                        </Link>
+                    </li>
+                    <button>
+                        Booking
+                    </button>
             </ul>
             <h2 id="icon_bar" onClick={handleShowNav}>
                 <RxHamburgerMenu />
@@ -44,16 +53,24 @@ function Navbar() {
             </h2>
             <ul id="mobile_nav">
                     <li>
-                        Home
+                        <Link href="/">
+                            Home
+                        </Link>
                     </li>
                     <li>
-                        Services
+                        <Link href="/services">
+                            Services
+                        </Link>
                     </li>
                     <li>
-                        About Us
+                        <Link href="/about-us">
+                            About us
+                        </Link>
                     </li>
                     <li>
-                        Contact Us
+                        <Link href="/contact-us">
+                            Contact us
+                        </Link>
                     </li>
                     <button>
                         Booking
