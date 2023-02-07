@@ -4,6 +4,7 @@ import '@/styles/globals.css';
 import '@/styles/about-us.css';
 import '@/styles/contact-us.css';
 import '@/styles/services.css';
+import '@/styles/booking.css';
 
 
 export default function App({ Component, pageProps }) {
