@@ -1,6 +1,13 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 function Services() {
+    let router = useRouter();
+
+    const handleClick = (e) => {
+        e.preventDefault();
+        router.push("/services");
+    }
     return (
         <>
             <div id="services-container">
@@ -15,8 +22,8 @@ function Services() {
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean rhoncus luctus ante ut aliquam. Mauris consectetur sem diam, ut convallis turpis laoreet a. Suspendisse tempus tortor nibh, interdum fermentum tortor sodales ac. Praesent quis ante aliquet, consequat enim non, bibendum tortor.
                 </p>
-                <button>
-                    Book a Service
+                <button onClick={handleClick}>
+                    Learn more
                 </button>
                 <div id="service-list">
                     <div className="service">

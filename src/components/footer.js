@@ -32,8 +32,8 @@ function Footer() {
                         </Link>
                     </li>
                     <li>
-                        <Link href="/reviews">
-                            Reviews
+                        <Link href="/booking">
+                            Booking
                         </Link>
                     </li>
                 </ul>

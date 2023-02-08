@@ -106,3 +106,120 @@ div#booking-container form span input {
     width: 100%;
 }
 
+@media screen and (max-width: 1200px) {
+    div#booking-container h2 {
+        font-size: 40px;
+    }
+    div#booking-container p {
+        font-size: 18px;
+    }
+
+    div#booking-container h3 {
+        font-size: 26px;
+    }
+
+    div#booking-container form label {
+        font-size: 18px;
+        margin-bottom: -15px;
+    }
+
+    div#booking-container form input,div#booking-container form select {
+        font-size: 18px;
+    }
+
+    div#booking-container form textarea {
+        font-size: 18px;
+    }
+
+    div#booking-container form button {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    div#booking-container h2 {
+        font-size: 30px;
+    }
+    div#booking-container p {
+        font-size: 16px;
+    }
+
+    div#booking-container h3 {
+        font-size: 22px;
+    }
+
+    div#booking-container form {
+        width: 90%;
+        padding: 15px;
+    }
+
+    div#booking-container form label {
+        font-size: 16px;
+        margin-bottom: -15px;
+    }
+
+    div#booking-container form input,div#booking-container form select {
+        font-size: 16px;
+        padding: 8px 0px;
+    }
+
+    div#booking-container form textarea {
+        font-size: 16px;
+        padding: 8px;
+        height: 25vh;
+    }
+
+    div#booking-container form button {
+        font-size: 16px;
+        padding: 8px 0px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    div#booking-container h2 {
+        font-size: 24px;
+        text-align: center;
+    }
+    div#booking-container p {
+        font-size: 14px;
+        width: 90%;
+    }
+
+    div#booking-container h3 {
+        font-size: 18px;
+        margin-top: 20px;
+        margin-bottom: -20px;
+    }
+
+    div#booking-container form {
+        width: 95%;
+        padding: 10px;
+    }
+
+    div#booking-container form span {
+        gap: 10px;
+    }
+
+    div#booking-container form label {
+        font-size: 14px;
+        margin-bottom: -15px;
+    }
+
+    div#booking-container form input,div#booking-container form select {
+        font-size: 14px;
+        padding: 5px 0px;
+        text-indent: 5px;
+    }
+
+    div#booking-container form textarea {
+        font-size: 14px;
+        padding: 5px;
+        height: 15vh;
+    }
+
+    div#booking-container form button {
+        font-size: 14px;
+        padding: 5px 0px;
+    }
+}
+

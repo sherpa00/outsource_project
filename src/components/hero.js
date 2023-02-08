@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { TypeAnimation } from "react-type-animation";
 
 function Hero() {
@@ -12,6 +13,13 @@ function Hero() {
         "Chitwan",
         1000
     ];
+
+    let router = useRouter();
+
+    const handleClick = (e) => {
+        e.preventDefault();
+        router.push("/booking");
+    }
 
     return (
         <>
@@ -30,7 +38,7 @@ function Hero() {
                 <p>
                     only the best handyman to get the job done and make your home a beautifull place to live peacefully.
                 </p>
-                <button>
+                <button onClick={handleClick}>
                     Book Now
                 </button>
             </div>

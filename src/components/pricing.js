@@ -1,4 +1,13 @@
+import { useRouter } from "next/router";
+
 function Pricing() {
+    let router = useRouter();
+
+    const handleClick = (e) => {
+        e.preventDefault();
+        router.push("/booking");
+    }
+
     return (
         <>
             <div id="pricing-container">
@@ -26,7 +35,7 @@ function Pricing() {
                             <li><span className="wrong">&#10006;</span> sample text here</li>
                             <li><span className="wrong">&#10006;</span> other text here</li>
                         </ul>
-                        <button>
+                        <button onClick={handleClick}>
                             Book Now
                         </button>
                     </div>
@@ -48,7 +57,7 @@ function Pricing() {
                             <li><span className="wrong">&#10006;</span> sample text here</li>
                             <li><span className="wrong">&#10006;</span> other text here</li>
                         </ul>
-                        <button>
+                        <button onClick={handleClick}>
                             Book Now
                         </button>
                     </div>
@@ -70,7 +79,7 @@ function Pricing() {
                             <li><span className="right">&#10004;</span> sample text here</li>
                             <li><span className="right">&#10004;</span> other text here</li>
                         </ul>
-                        <button>
+                        <button onClick={handleClick}>
                             Book Now
                         </button>
                     </div>

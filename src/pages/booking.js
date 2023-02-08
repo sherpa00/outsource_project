@@ -40,7 +40,7 @@ function BookingForm() {
                     <label htmlFor="address">
                         Your Address :
                     </label>
-                    <input type="text" id="address" name="address" value={address} onChange={(e) => setAddress(e.target.value)} placeholder="whitecastel-11,Melbourne" required />
+                    <input type="text" id="address" name="address" value={address} onChange={(e) => setAddress(e.target.value)} placeholder="st-1001,Melbourne" required />
                 </span>
             </span>
 

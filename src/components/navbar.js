@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { createRef } from "react";
 import {RxHamburgerMenu,RxCross1} from "react-icons/rx";
 
@@ -14,13 +15,25 @@ function Navbar() {
         navRef.current.style.left = "-1000%";
     }
 
+    let router = useRouter();
+
+    const handleClick = (e) => {
+        e.preventDefault();
+        router.push("/booking");
+        handleHideNav();
+    }
+
     return (
         <>
         <nav>
-            <h2>logo</h2>
+            <h2 style={{cursor: "pointer"}}>
+                <Link href="/">
+                    LOGO
+                </Link>
+            </h2>
             <ul id="desktop_nav">
-            <li>
-                        <Link href="/">
+                    <li>
+                        <Link href="/" >
                             Home
                         </Link>
                     </li>
@@ -39,7 +52,7 @@ function Navbar() {
                             Contact us
                         </Link>
                     </li>
-                    <button>
+                    <button onClick={handleClick}>
                         Booking
                     </button>
             </ul>
@@ -72,7 +85,7 @@ function Navbar() {
                             Contact us
                         </Link>
                     </li>
-                    <button >
+                    <button onClick={handleClick}>
                         Booking
                     </button>
                 </ul>
