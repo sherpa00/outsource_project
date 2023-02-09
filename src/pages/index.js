@@ -9,7 +9,7 @@ import Pricing from '@/components/pricing'
 import Faq from '@/components/faq'
 import ContactUs from '@/components/contactus'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
   return (

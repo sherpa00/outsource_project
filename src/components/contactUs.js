@@ -1,10 +1,11 @@
 import Image from "next/image";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { toast } from "react-toastify";
+import emailjs from "@emailjs/browser";
 
 function ContactUs() {
     return (
         <div id="contactus-container">
-            
             <div id="contactus-list">
                 <div id="contact-details">
                 <h2>Contact Us</h2>
@@ -56,23 +57,38 @@ export function ContactForm() {
     const [email,setEmail] = useState("");
     const [phone,setPhone] = useState("");
     const [location,setLocation] = useState("");
-    const [service,setService] = useState("");
+
+    const serviceRef = useRef();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        let res = {
-            email: email,
-            phone: phone,
-            location: location,
-            service: service
+        let resParams = {
+            from_email: email,
+            from_phone: phone,
+            from_location: location,
+            from_service: serviceRef.current.value
         }
-        console.log(res);
+        // send email here
+        emailjs.send(
+            process.env.EMAILJS_SERVICE_ID,
+            process.env.EMAILJS_TEMPLATE_ID,
+            resParams,
+            process.env.EMAILJS_PUBLIC_KEY
+        ).then((response) => {
+            console.log("SUCCESS",response.status,response.text);
+            setEmail("");
+            setPhone("");
+            setLocation("");
+            toast.success('Successfully sent the contact form.', { hideProgressBar: true, autoClose: 2000,position: "bottom-center" })
+        }).catch((err) => {
+            console.log("ERROR",err);
+        });
     }
 
     return (
         <form onSubmit={handleSubmit}>
             <h3>
-                Contact us here
+                Contact us heres
             </h3>
             <p>
                 Contact us today by completing our oline quote form elow and we will get back to you as soon as possilbe.
@@ -92,7 +108,7 @@ export function ContactForm() {
             <label htmlFor="service">
                 Select Service:
             </label>
-            <select id="service" name="service">
+            <select id="service" name="service" ref={serviceRef}>
                 <option value="House Cleaning">House Cleaning</option>
                 <option value="Office Cleaning2">Office Cleaning</option>
                 <option value="School Cleaning3">School Cleaning</option>

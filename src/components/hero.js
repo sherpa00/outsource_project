@@ -23,7 +23,7 @@ function Hero() {
 
     return (
         <>
-        <div className="hero-container">
+        <div className="hero-container" data-aos="fade-up" data-aos-duration="1000">
             <div id="hero-details">
                 <h2>The Best Cleaning Service located in <span> <TypeAnimation
                         sequence={cities}

@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { toast } from "react-toastify";
 
 function Booking() {
     return (
@@ -22,12 +23,30 @@ function BookingForm() {
     const [address,setAddress] = useState("");
     const [email,setEmail] = useState("");
     const [phone,setPhone] = useState("");
-   // const [sevicePackage,setServerPackage] = useState("");
     const [date,setDate] = useState("");
     const [info,setInfo] = useState("");
 
+    const packageRef = useRef();
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        let bookingData = {
+            fullname: fullname,
+            address: address,
+            email: email,
+            phone: phone,
+            date: date,
+            info: info,
+            package: packageRef.current.value
+        }
+
+        console.log(bookingData);
+        toast.success('Successfully sent the contact form.', { hideProgressBar: true, autoClose: 2000,position: "bottom-center" })
+        window.location.reload();
+    }
+
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <span>
                 <span>
                     <label htmlFor="fullname">
@@ -68,7 +87,7 @@ function BookingForm() {
             <label htmlFor="level">
                 Prefered Service Package:
             </label>
-            <select>
+            <select name="level" id="level" ref={packageRef}>
                 <option value="Basic">Basic</option>
                 <option value="Standard">Standard</option>
                 <option value="Premium">Premium</option>
