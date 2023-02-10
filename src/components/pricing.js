@@ -12,7 +12,7 @@ function Pricing() {
         <>
             <div id="pricing-container">
                 <h2>
-                    Get The best Pricing
+                    Get The best Pricing <span>&#x1F4B0;</span>
                 </h2>
                 <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean rhoncus luctus ante ut aliquam. Mauris consectetur sem diam, ut convallis turpis laoreet a. Suspendisse tempus tortor nibh, interdum fermentum tortor sodales ac.

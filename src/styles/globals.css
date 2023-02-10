@@ -207,6 +207,8 @@ div#mobile {
   z-index: 1000;
   transition-duration: 500ms;
   transition-timing-function: ease-in-out;
+  font-family: var(--secondary-font);
+  font-weight: 600;
 }
 
 div#mobile h2#icon_bar {
@@ -682,6 +684,8 @@ div#faq-container h2 {
   font-size: 50px;
   font-weight: 800;
   font-family: var(--primary-font);
+  text-align: center;
+  width: 100%;
 }
 
 div#faq-container div#faq-list {
@@ -1602,6 +1606,15 @@ footer p {
     font-size: 16px;
   }
 }
+
+button {
+  border: 1.5px solid #00000095;
+}
+
+h2,h3,h4,p,label,input,button,select,textarea,ul,li,details {
+  color: #222 !important
+}
+
 
 
 

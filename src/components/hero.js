@@ -4,14 +4,16 @@ import { TypeAnimation } from "react-type-animation";
 
 function Hero() {
     let cities = [
-        "kathmandu",
-        1000,
-        "Pokhara",
-        1000,
-        "Dharan",
-        1000,
-        "Chitwan",
-        1000
+        "Sydney",
+        1500,
+        "Melbourne",
+        1500,
+        "Brisbane",
+        1500,
+        "Perth",
+        1500,
+        "Adelaide",
+        1500
     ];
 
     let router = useRouter();
@@ -27,7 +29,7 @@ function Hero() {
             <div id="hero-details">
                 <h2>The Best Cleaning Service located in <span> <TypeAnimation
                         sequence={cities}
-                        speed={60}
+                        speed={10}
                         wrapper="span"
                         repeat={Infinity}
                     >

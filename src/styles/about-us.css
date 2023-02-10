@@ -16,6 +16,12 @@ div#about-us h2 {
     font-family: var(--primary-font);
     margin: 20px auto;
     font-weight: 800;
+    width: 100%;
+    text-align: center;
+}
+
+div#about-us h2 span {
+    color: var(--secondary-color);
 }
 
 div#about-us p {
@@ -31,16 +37,20 @@ div#about-us h3 {
     margin: 50px auto;
     font-family: var(--primary-font);
     font-weight: 400;
+    width: 100%;
+    text-align: center;
 }
 
 div#about-us ul {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     width: 100%;
     margin: 20px auto;
+    gap: 20px;
     list-style: none;
+    padding: 10px;
 }
 
 div#about-us ul li {
@@ -48,6 +58,9 @@ div#about-us ul li {
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    background-color: whitesmoke;
+    padding: 20px;
+    border-radius: 20px;
 }
 
 div#about-us ul li .icon {
@@ -150,7 +163,7 @@ div#about-us ul li div p {
     }
 
     div#about-us ul li .icon {
-        font-size: 50px;
+        font-size: 60px;
     }
 
     div#about-us ul li div h4 {
@@ -158,6 +171,10 @@ div#about-us ul li div p {
     }
 
     div#about-us ul li div p {
+        font-size: 14px;
+    }
+
+    div#about-us p {
         font-size: 14px;
     }
 }

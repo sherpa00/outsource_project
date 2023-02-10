@@ -16,7 +16,7 @@ function AboutUs() {
                     id="top-image"
                 />
                 <h2>
-                    About Us
+                    About <span>Us</span>
                 </h2>
 
                 <p>

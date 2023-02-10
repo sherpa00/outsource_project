@@ -11,6 +11,7 @@ div#services h2 {
     font-family: var(--primary-font);
     margin: 20px auto;
     text-align: center;
+    width: 100%;
 }
 
 div#services h2 span {
@@ -38,7 +39,7 @@ div#services div#services-details-list {
 
 div#services-details-list div.service-details {
     display: flex;
-    gap: 10px;
+    gap: 20px;
     width: 100%;
     justify-content: center;
     align-items: center;
@@ -51,8 +52,6 @@ div#services-details-list div.left {
 div#services-details-list div.right {
     flex-direction: row-reverse;
 }
-
-
 
 div.service-details img {
     width: 45%;
@@ -72,10 +71,12 @@ div.service-details div h3 {
     color: steelblue;
     font-weight: 600;
     font-family: var(--primary-font);
-    border-bottom: 1px solid royalblue;
+    border-bottom: 1px solid skyblue;
     margin-bottom: -5px;
     padding: 0px 30px;
     padding-bottom: 5px;
+    width: 100%;
+    text-align: center;
 }
 
 div#services-details-list div.service-details div p {
