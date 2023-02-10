@@ -13,6 +13,10 @@ div#booking-container h2 {
     margin: 20px auto;
 }
 
+div#booking-container h2 span {
+    color: var(--secondary-color)
+}
+
 div#booking-container p {
     font-size: 20px;
     font-weight: 600;
@@ -55,7 +59,7 @@ div#booking-container form input,div#booking-container form select {
     font-size: 20px;
     padding: 10px 0px;
     border-radius: 5px;
-    font-family: var(--primary-font);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-indent: 10px;
     border: 2px solid gray;
 }
@@ -65,7 +69,7 @@ div#booking-container textarea {
     font-size: 20px;
     padding: 10px;
     border-radius: 5px;
-    font-family: var(--primary-font);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     resize: none;
     height: 35vh;
     border: 2px solid gray;

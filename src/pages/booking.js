@@ -6,7 +6,7 @@ function Booking() {
     return (
         <div id="booking-container">
             <h2>
-                Book Now for instant Quote
+                Book Now for instant <span>Quote</span>
             </h2>
             <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus, augue id laoreet lacinia, lorem turpis laoreet justo, vitae pretium justo dui eget sem. In consectetur elementum tortor, nec ornare eros vulputate id. Pellentesque lobortis, eros eget iaculis accumsan, ante lorem imperdiet est, at venenatis orci lacus id mi. 

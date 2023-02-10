@@ -26,10 +26,8 @@ function Navbar() {
     return (
         <>
         <nav>
-            <h2 style={{cursor: "pointer"}}>
-                <Link href="/">
-                    LOGO
-                </Link>
+            <h2 style={{cursor: "pointer"}} onClick={() => window.location.href = "/"}>
+                LOGO
             </h2>
             <ul id="desktop_nav">
                     <li>

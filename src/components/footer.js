@@ -5,10 +5,8 @@ function Footer() {
     return (
         <footer>
             <div id="footer-details">
-                <h2>
-                    <Link href="/">
-                        LOGO
-                    </Link>
+                <h2 style={{cursor: "pointer"}} onClick={() => window.location.href = "/"}>
+                    LOGO
                 </h2>
                 <ul>
                     <li>

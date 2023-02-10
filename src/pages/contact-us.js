@@ -1,6 +1,6 @@
-const { default: ContactUs } = require("@/components/contactus");
+import ContactUs from "@/components/contactUs";
 
-function Contactus() {
+function ContactUsPage() {
     return (
         <>
             <div id="contact-us">
@@ -13,4 +13,4 @@ function Contactus() {
     )
 }
 
-export default Contactus;
+export default ContactUsPage;
