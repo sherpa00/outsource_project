@@ -71,7 +71,7 @@ export function ContactForm() {
         // send email here
         emailjs.send(
             process.env.EMAILJS_SERVICE_ID,
-            process.env.EMAILJS_TEMPLATE_ID,
+            process.env.CONTACT_TEMPLATE_ID,
             resParams,
             process.env.EMAILJS_PUBLIC_KEY
         ).then((response) => {
@@ -79,7 +79,10 @@ export function ContactForm() {
             setEmail("");
             setPhone("");
             setLocation("");
-            toast.success('Successfully sent the contact form.', { hideProgressBar: true, autoClose: 2000,position: "bottom-center" })
+            toast.success('Successfully sent the contact form.', { hideProgressBar: true, autoClose: 2000,position: "bottom-center" });
+            setInterval(() => {
+                window.location.reload();
+            },2000);
         }).catch((err) => {
             console.log("ERROR",err);
         });

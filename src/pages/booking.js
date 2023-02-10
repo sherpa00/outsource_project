@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { toast } from "react-toastify";
+import emailjs from "@emailjs/browser";
 
 function Booking() {
     return (
@@ -31,18 +32,36 @@ function BookingForm() {
     const handleSubmit = (e) => {
         e.preventDefault();
         let bookingData = {
-            fullname: fullname,
-            address: address,
-            email: email,
-            phone: phone,
-            date: date,
-            info: info,
-            package: packageRef.current.value
+            from_name: fullname,
+            from_address: address,
+            from_email: email,
+            from_phone: phone,
+            from_date: date,
+            from_additional_info: info,
+            from_service_package: packageRef.current.value,
+            from_booking_date: new Date().toLocaleDateString()
         }
 
-        console.log(bookingData);
-        toast.success('Successfully sent the contact form.', { hideProgressBar: true, autoClose: 2000,position: "bottom-center" })
-        window.location.reload();
+        // send email here for booking
+        emailjs.send(
+            process.env.EMAILJS_SERVICE_ID,
+            process.env.BOOKING_TEMPLATE_ID,
+            bookingData,
+            process.env.EMAILJS_PUBLIC_KEY
+        ).then((response) => {
+            console.log("Successfully booked",response.status,response.text);
+            toast.success('Successfully Booked. Thank You.', { hideProgressBar: true, autoClose: 2000,position: "bottom-center" });
+            setTimeout(() => {
+                window.location.reload();
+            },2000);
+
+        }).catch((err) => {
+            console.log("Errro",err);
+            toast.error('Some Error occurd. Try Again', { hideProgressBar: true, autoClose: 2000,position: "bottom-center" });
+            setTimeout(() => {
+                window.location.reload();
+            },2000);
+        })
     }
 
     return (
@@ -50,7 +69,7 @@ function BookingForm() {
             <span>
                 <span>
                     <label htmlFor="fullname">
-                        Your Name :
+                        Your Name:
                     </label>
                     <input type="text" id="fullname" name="fullname" value={fullname} onChange={(e) => setFullname(e.target.value)} placeholder="jhon doe" required />
                 </span>
