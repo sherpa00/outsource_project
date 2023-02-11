@@ -8,6 +8,7 @@ import AboutUs from '@/components/aboutUs'
 import Pricing from '@/components/pricing'
 import Faq from '@/components/faq'
 import ContactUs from '@/components/contact'
+import Testomonials from '@/components/testomonials'
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -25,6 +26,7 @@ export default function Home() {
       <main className={styles.main}>
           <Hero />
           <TrustedBy />
+          <Testomonials />
           <Services />
           <AboutUs />
           <Pricing />

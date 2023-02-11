@@ -101,11 +101,6 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-}
 /*______________________ Navbar ______________________*/
 nav {
   position: fixed;
@@ -118,7 +113,7 @@ nav {
   padding: 20px 30px;
   font-weight: 600;
   /* From https://css.glass */
-  background: rgba(255, 255, 255, 0.11);
+  background: #fdfdfd1c;
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(4.4px);
@@ -216,7 +211,7 @@ div#mobile h2#icon_bar {
   text-align: right;
   font-size: 30px;
   cursor: pointer;
-  color: black;
+  color: whitesmoke;
   font-weight: 600;
   transition-duration: 400ms;
   transition-timing-function: ease-in-out;
@@ -398,6 +393,112 @@ div#trustedby-container ul li h4 {
 div#trustedby-container ul li span {
   font-size: 50px;
   text-align: center;
+}
+
+/* ____________________ Testomonials ______________________ */
+div#testomonials_container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-color);
+  padding-bottom: 50px;
+}
+
+div#testomonials_container h2 {
+  font-size: 50px;
+  width: 100%;
+  text-align: center;
+  font-family: var(--primary-font);
+  color: #222;
+}
+
+div#testomonials_container div#testomonials_list {
+  width: 80%;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 10px;
+}
+
+div#testomonials_list div.single-review-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+div.single-review-container #left,#right {
+  font-size: 40px;
+  color: #00000090;
+  cursor: pointer;
+  transition-duration: 400ms;
+  transition-timing-function: ease-in-out;
+}
+
+div.single-review-container #left:hover,#right:hover {
+  color: #222;
+}
+
+div#testomonials_list div.single-review {
+  width: 85%;
+  margin: 10px auto;
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 30px;
+}
+
+div.single-review #quote-left {
+  text-align: left;
+  font-size: 40px;
+  color: #00000080;
+}
+
+div.single-review #quote-right {
+  text-align:right;
+  font-size: 40px;
+  float: right;
+  margin: 0;
+  padding: 0;
+  color: #00000080
+}
+
+div.single-review #person {
+  width: 100%;
+  font-size: 60px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px auto;
+  margin-top: 60px;
+  padding: 0px;
+  color: #00000080
+}
+
+div.single-review p {
+  font-size: 20px;
+  font-family: var(--secondary-font);
+  font-weight: 600;
+  text-align: center;
+  margin: 10px auto;
+  margin-top: 15px;
+}
+
+div.single-review h4 {
+  font-size: 24px;
+  font-family: var(--primary-font);
+  text-align: center;
+  color: #00000095 !important;
 }
 
 /* _______________ Services _____________ */
@@ -981,6 +1082,35 @@ footer p {
     font-size: 40px;
   }
 
+  /* _____________________ Testomonials _____________________ */
+  div#testomonials_container h2 {
+    font-size: 40px;
+  }
+
+  div#testomonials_container div#testomonials_list div.single-review-container #left,#right {
+    font-size: 30px;
+  }
+
+  div.single-review-container div.single-review #quote-left, div.single-review-container div.single-review #quote-right {
+    font-size: 30px;
+  }
+
+  div.single-review #person {
+    font-size: 50px;
+  }
+
+  div.single-review {
+    padding: 25px;
+  }
+
+  div.single-review p {
+    font-size: 18px;
+  }
+
+  div.single-review h4 {
+    font-size: 20px;
+  }
+
   /* _________________ Services _____________________ */
   div#services-container h2 {
     font-size: 50px;
@@ -1180,6 +1310,45 @@ footer p {
 
   div#trustedby-container ul li span {
     font-size: 30px;
+  }
+
+  /* _____________________ Testomonials _____________________ */
+  div#testomonials_container h2 {
+    font-size: 30px;
+  }
+
+  div#testomonials_container div#testomonials_list {
+    width: 95%;
+  }
+
+  div#testomonials_list div.sinlge-review-container {
+    width: 100%;
+    padding: 0;
+    gap: 10px;
+  }
+
+  div#testomonials_container div#testomonials_list div.single-review-container #left,#right {
+    font-size: 25px;
+  }
+
+  div.single-review-container div.single-review #quote-left, div.single-review-container div.single-review #quote-right {
+    font-size: 25px;
+  }
+
+  div.single-review #person {
+    font-size: 40px;
+  }
+
+  div.single-review {
+    padding: 20px;
+  }
+
+  div.single-review p {
+    font-size: 16px;
+  }
+
+  div.single-review h4 {
+    font-size: 18px;
   }
   
   /* _________________ Services _____________________ */
@@ -1435,6 +1604,46 @@ footer p {
 
   div#trustedby-container ul li span {
     font-size: 25px;
+  }
+
+  /* _____________________ Testomonials _____________________ */
+  div#testomonials_container h2 {
+    font-size: 26px;
+  }
+
+  div#testomonials_container div#testomonials_list {
+    width: 98%;
+  }
+
+  div#testomonials_list div.sinlge-review-container {
+    width: 100%;
+    padding: 0;
+    gap: 10px;
+  }
+
+  div#testomonials_container div#testomonials_list div.single-review-container #left,#right {
+    font-size: 20px;
+  }
+
+  div.single-review-container div.single-review #quote-left, div.single-review-container div.single-review #quote-right {
+    font-size: 20px;
+  }
+
+  div.single-review-container div.single-review {
+    padding: 0px;
+    width: 70%;
+  }
+
+  div.single-review #person {
+    font-size: 30px;
+  }
+
+  div.single-review p {
+    font-size: 14px;
+  }
+
+  div.single-review h4 {
+    font-size: 16px;
   }
 
   /* _________________ Services _____________________ */

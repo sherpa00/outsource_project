@@ -1,3 +1,5 @@
+import Testomonials from "./testomonials";
+
 function TrustedBy() {
     return (
         <div id="trustedby-container">
