@@ -1,34 +1,39 @@
 import { useState } from "react";
 
-function Faq() {
+export const faqList = [
+    {
+        question: "What is the total cost of cleaning ?",
+        answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean rhoncus luctus ante ut aliquam. Mauris consectetur sem diam, ut convallis turpis laoreet a. Suspendisse tempus tortor nibh, interdum fermentum tortor sodales ac. Praesent quis ante aliquet, consequat enim non, bibendum tortor",
+        active: true,
+        id :1
+    },
+    {
+        question: "How much time it takes to get job done ?",
+        answer: "Lorem ipsur adipiscing rhoncus luctus ante ut aliquam. Mauris consectetur sem diam, ut convallis turpis laoreet a. Suspendisse tempus tortor nibh, interdum fermentum tortor sodales ac. Praesent quis ante aliquet, consequat enim non, bibendum tortor",
+        active: false,
+        id: 2
+    },
+    {
+        question: "what time the service is available ?",
+        answer: "Lorem ipsum ipiscing elidlkfjdkls fdsklfj jf dkjf alkdjlfkj lkjdaf",
+        active: false,
+        id: 3
+    },
+    {
+        question: "How many service offices are stationed ?",
+        answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean rhoncus luctus ante ut aliquam. Mauris consectetur sem diam, ut convallis turpis laoreet a. Suspendisse tempus tortor nibh, interdum fermentum tortor sodales ac. Praesent quis ante aliquet, consequat enim non, bibendum tortor",
+        active: false,
+        id: 4
+    },
+    {
+        question: "What are some best cleaning services right now ?",
+        answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean rhoncus luctus ante ut aliquam. Mauris consectetur sem diam, ut convallis turpis laoreet a. Suspendisse tempus tortor nibh, interdum fermentum tortor sodales ac. Praesent quis ante aliquet, consequat enim non, bibendum tortor",
+        active: false,
+        id: 5
+    }
+];
 
-    const faqList = [
-        {
-            question: "What is the total cost of cleaning ?",
-            answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean rhoncus luctus ante ut aliquam. Mauris consectetur sem diam, ut convallis turpis laoreet a. Suspendisse tempus tortor nibh, interdum fermentum tortor sodales ac. Praesent quis ante aliquet, consequat enim non, bibendum tortor",
-            active: true,
-        },
-        {
-            question: "How much time it takes to get job done ?",
-            answer: "Lorem ipsur adipiscing rhoncus luctus ante ut aliquam. Mauris consectetur sem diam, ut convallis turpis laoreet a. Suspendisse tempus tortor nibh, interdum fermentum tortor sodales ac. Praesent quis ante aliquet, consequat enim non, bibendum tortor",
-            active: false
-        },
-        {
-            question: "what time the service is available ?",
-            answer: "Lorem ipsum ipiscing elidlkfjdkls fdsklfj jf dkjf alkdjlfkj lkjdaf",
-            active: false
-        },
-        {
-            question: "How many service offices are stationed ?",
-            answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean rhoncus luctus ante ut aliquam. Mauris consectetur sem diam, ut convallis turpis laoreet a. Suspendisse tempus tortor nibh, interdum fermentum tortor sodales ac. Praesent quis ante aliquet, consequat enim non, bibendum tortor",
-            active: false
-        },
-        {
-            question: "What are some best cleaning services right now ?",
-            answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean rhoncus luctus ante ut aliquam. Mauris consectetur sem diam, ut convallis turpis laoreet a. Suspendisse tempus tortor nibh, interdum fermentum tortor sodales ac. Praesent quis ante aliquet, consequat enim non, bibendum tortor",
-            active: false
-        }
-    ];
+function Faq() {
 
     return (
         <div id="faq-container">
@@ -40,7 +45,7 @@ function Faq() {
                                     question={faq.question}
                                     answer={faq.answer}
                                     active={faq.active}
-                                    key={index}
+                                    key={faq.id}
                                 />
                     })
                 }

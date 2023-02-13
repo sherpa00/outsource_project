@@ -36,6 +36,23 @@ function Footer() {
                     </li>
                 </ul>
             </div>
+            <ol>
+                <li>
+                    <Link href="/privacy-policies">
+                        Privacy Policies
+                    </Link>
+                </li>
+                <li>
+                    <Link href="/terms-and-conditions">
+                        Terms and Conditions
+                    </Link>
+                </li>
+                <li>
+                    <Link href="/faq">
+                        FAQS
+                    </Link>
+                </li>
+            </ol>
             <p>
                 copyright 2023 Commercial Cleanling Service of Melbourne. ALl rights reserved.
             </p>

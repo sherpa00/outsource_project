@@ -39,6 +39,7 @@ function Testomonials() {
             setIndex(prevState => prevState + 1);
         }
     }
+
     return (
         <div id="testomonials_container">
             <h2>Our Testomonials</h2>
@@ -59,10 +60,15 @@ function SingleReview({text,name,company,onGetPrev,onGetNext}) {
 
     const handlePrev = () => {
         onGetPrev();
+        
     }
 
     const handleNext = () => {
         onGetNext();
+    }
+
+    if (!text) {
+        return null;
     }
 
     return (

@@ -9,6 +9,7 @@ import '@/styles/about-us.css';
 import '@/styles/contact-us.css';
 import '@/styles/services.css';
 import '@/styles/booking.css';
+import '@/styles/faq.css';
 
 export default function App({ Component, pageProps }) {
   return (
