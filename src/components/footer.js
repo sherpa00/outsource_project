@@ -43,7 +43,7 @@ function Footer() {
                     </Link>
                 </li>
                 <li>
-                    <Link href="/terms-and-conditions">
+                    <Link href="/terms_and_conditions">
                         Terms and Conditions
                     </Link>
                 </li>

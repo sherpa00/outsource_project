@@ -10,6 +10,7 @@ import '@/styles/contact-us.css';
 import '@/styles/services.css';
 import '@/styles/booking.css';
 import '@/styles/faq.css';
+import '@/styles/terms_and_conditions.css';
 
 export default function App({ Component, pageProps }) {
   return (
