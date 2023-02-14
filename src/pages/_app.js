@@ -11,6 +11,7 @@ import '@/styles/services.css';
 import '@/styles/booking.css';
 import '@/styles/faq.css';
 import '@/styles/terms_and_conditions.css';
+import '@/styles/privacy-policy.css';
 
 export default function App({ Component, pageProps }) {
   return (

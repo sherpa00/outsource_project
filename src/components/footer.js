@@ -38,8 +38,8 @@ function Footer() {
             </div>
             <ol>
                 <li>
-                    <Link href="/privacy-policies">
-                        Privacy Policies
+                    <Link href="/privacy-policy">
+                        Privacy Policy
                     </Link>
                 </li>
                 <li>
