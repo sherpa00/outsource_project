@@ -6,7 +6,7 @@ const servicesData = [
         title: "Service1",
         desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce pharetra a metus ut placerat. Phasellus hendrerit vitae urna vitae pharetra. Curabitur sit amet pharetra eros, et vestibulum erat. Vestibulum non pharetra orci, eget gravida tellus. Nam sed ligula odio. In hac habitasse platea dictumst",
         position: "left",
-        linkSrc: "/",
+        linkSrc: "/services/service1",
         imgSrc : "/services1.webp",
         alt: "animated people working in cleaning services",
         id: "1"
@@ -15,7 +15,7 @@ const servicesData = [
         title: "Service2",
         desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce pharetra a metus ut placerat. Phasellus hendrerit vitae urna vitae pharetra. Curabitur sit amet pharetra eros, et vestibulum erat. Vestibulum non pharetra orci, eget gravida tellus. Nam sed ligula odio. In hac habitasse platea dictumst",
         position: "right",
-        linkSrc: "/",
+        linkSrc: "/services/service2",
         imgSrc : "/services2.webp",
         alt: "animated people working in cleaning services",
         id: 2
@@ -24,7 +24,7 @@ const servicesData = [
         title: "Service3",
         desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce pharetra a metus ut placerat. Phasellus hendrerit vitae urna vitae pharetra. Curabitur sit amet pharetra eros, et vestibulum erat. Vestibulum non pharetra orci, eget gravida tellus. Nam sed ligula odio. In hac habitasse platea dictumst",
         position: "left",
-        linkSrc: "/",
+        linkSrc: "/services/service3",
         imgSrc : "/services1.webp",
         alt: "animated people working in cleaning services",
         id: 3
@@ -33,7 +33,7 @@ const servicesData = [
         title: "Service4",
         desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce pharetra a metus ut placerat. Phasellus hendrerit vitae urna vitae pharetra. Curabitur sit amet pharetra eros, et vestibulum erat. Vestibulum non pharetra orci, eget gravida tellus. Nam sed ligula odio. In hac habitasse platea dictumst",
         position: "right",
-        linkSrc: "/",
+        linkSrc: "/services/service4",
         imgSrc : "/services2.webp",
         alt: "animated people working in cleaning services",
         id: 4

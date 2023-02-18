@@ -30,7 +30,17 @@ function AboutUs() {
                 </p>
 
                 <h3>Why Choose us?</h3>
-                <ul>
+                <WhyChooseUse />
+            </div>
+            <br></br>
+            <ContactUs />
+        </>
+    )
+}
+
+export function WhyChooseUse() {
+    return (
+        <ul>
                     <li>
                         <AiOutlineFieldTime className="icon"></AiOutlineFieldTime>
                         <div>
@@ -54,10 +64,6 @@ function AboutUs() {
                     </li>
                     
                 </ul>
-            </div>
-            <br></br>
-            <ContactUs />
-        </>
     )
 }
 
