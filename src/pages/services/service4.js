@@ -3,6 +3,7 @@ import ServiceStyle from "@/styles/Services.module.css";
 import Image from "next/image";
 import {MdCleaningServices,MdDryCleaning,MdCleanHands,MdOutlineHomeWork} from "react-icons/md";
 import {GiVacuumCleaner,GiBroom} from "react-icons/gi"
+import HowToBook from "@/components/howtobook";
 
 function Service4Page() {
     return (
@@ -89,6 +90,7 @@ function Service4Page() {
                     </small>
                 </li>
             </ul>
+            <HowToBook />
             <ContactUs />
         </div>
     )

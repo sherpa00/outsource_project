@@ -5,11 +5,12 @@ function HowToBook() {
     return (
         <div id="howtobook">
             <h2>
-                How to Book?
+                How to order our services?
             </h2>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae ultricies massa. Cras imperdiet libero sit amet lacus pulvinar blandit. Curabitur quis velit ante. Pellentesque imperdiet diam sit amet interdum dignissim. Fusce nisl felis, convallis et risus at, fermentum malesuada leo.
             </p>
+            
             <ul>
                 <li>
                     <span>
@@ -17,7 +18,7 @@ function HowToBook() {
                     </span>
                     <FcBusinessContact id="step_icon" />
                     <h4>
-                        You send us a quote/booking
+                        You send us a quote or booking
                     </h4>
                     <small>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -29,7 +30,7 @@ function HowToBook() {
                     </span>
                     <FcAssistant id="step_icon" />
                     <h4>
-                        Get a Proffesional Answer
+                        Get Answers from Proffesionals
                     </h4>
                     <small>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -41,7 +42,7 @@ function HowToBook() {
                     </span>
                     <FcCollaboration id="step_icon" />
                     <h4>
-                        Collabrate with Proffesional
+                        Collabrate with our Proffesionals
                     </h4>
                     <small>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -53,7 +54,7 @@ function HowToBook() {
                     </span>
                     <FcApproval id="step_icon" />
                     <h4>
-                        Get Verified Cleaning Services
+                        Get our Verified Cleaning Services
                     </h4>
                     <small>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
