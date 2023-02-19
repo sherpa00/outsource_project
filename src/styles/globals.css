@@ -590,6 +590,88 @@ div.service h3 {
   font-weight: 400;
 }
 
+/* ____________________ How to Book ___________________ */
+div#howtobook {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+div#howtobook h2 {
+  font-size: 50px;
+  font-family: var(--primary-font);
+  margin: 20px auto;
+  width: 100%;
+  color: #222;
+}
+
+div#howtobook p {
+  font-size: 20px;
+  font-family: var(--secondary-font);
+  width: 80%;
+  margin: 0px auto;
+  font-weight: 600;
+}
+
+div#howtobook ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  width: 80%;
+  margin: 10px auto;
+}
+
+div#howtobook ul li {
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 10px;
+  padding: 30px 20px;
+  border-radius: 10px;
+  padding-top: 0px;
+  background-color: var(--primary-color);
+}
+
+div#howtobook ul li span {
+  font-size: 30px;
+  border-radius: 45%;
+  color:#eee;
+  background-color:#666;
+  text-indent: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  padding: 6px 18px;
+  text-align: center;
+  position: relative;
+  top: -27px;
+  font-weight: 600;
+}
+
+div#howtobook ul li #step_icon {
+  font-size: 80px;
+}
+
+div#howtobook ul li h4 {
+  font-size: 22px;
+  font-family: var(--primary-font);
+  font-weight: 400;
+}
+
+div#howtobook ul li small {
+  font-size: 16px;
+  font-family: var(--secondary-font);
+  font-weight: 600;
+}
+
+
+
 /* __________________ About us _____________________ */
 div#aboutus-container {
   width: 100%;

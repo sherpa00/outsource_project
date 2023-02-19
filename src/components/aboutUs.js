@@ -10,23 +10,26 @@ function AboutUs() {
     }
 
     return (
-        <div id="aboutus-container">
-            <div id="aboutus-details">
-                <h2>About Us<span>&#128161;</span></h2>
-                <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean rhoncus luctus ante ut aliquam. Mauris consectetur sem diam, ut convallis turpis laoreet a. Suspendisse tempus tortor nibh, interdum fermentum tortor sodales ac. Praesent quis ante aliquet, consequat enim non, bibendum tortor. Praesent ultricies, augue vitae porttitor molestie, leo urna laoreet risus, a fringilla elit leo eu orci. Sed scelerisque lectus elit, non auctor nunc tincidunt eu. Curabitur eu turpis est. 
-                </p>
-                <button onClick={handleClick}>
-                    Learn more
-                </button>
+        <>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#a2d9ff" fillOpacity="1" d="M0,64L48,96C96,128,192,192,288,186.7C384,181,480,107,576,80C672,53,768,75,864,112C960,149,1056,203,1152,197.3C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+            <div id="aboutus-container">
+                <div id="aboutus-details">
+                    <h2>About Us<span>&#128161;</span></h2>
+                    <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean rhoncus luctus ante ut aliquam. Mauris consectetur sem diam, ut convallis turpis laoreet a. Suspendisse tempus tortor nibh, interdum fermentum tortor sodales ac. Praesent quis ante aliquet, consequat enim non, bibendum tortor. Praesent ultricies, augue vitae porttitor molestie, leo urna laoreet risus, a fringilla elit leo eu orci. Sed scelerisque lectus elit, non auctor nunc tincidunt eu. Curabitur eu turpis est. 
+                    </p>
+                    <button onClick={handleClick}>
+                        Learn more
+                    </button>
+                </div>
+                <Image
+                    src="/supplies.png"
+                    alt="cleaning supplies"
+                    width={400}
+                    height={400}
+                />
             </div>
-            <Image
-                src="/supplies.png"
-                alt="cleaning supplies"
-                width={400}
-                height={400}
-            />
-        </div>
+        </>
     )
 }
 

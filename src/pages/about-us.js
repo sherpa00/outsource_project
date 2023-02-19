@@ -2,7 +2,7 @@ import Image from "next/image";
 import {RiCustomerService2Fill} from "react-icons/ri";
 import {HiUserGroup} from "react-icons/hi";
 import {AiOutlineFieldTime} from "react-icons/ai"
-import ContactUs, { ContactForm } from "@/components/contact";
+import ContactUs from "@/components/contact";
 
 function AboutUs() {
     return (

@@ -9,6 +9,7 @@ import Pricing from '@/components/pricing'
 import Faq from '@/components/faq'
 import ContactUs from '@/components/contact'
 import Testomonials from '@/components/testomonials'
+import HowToBook from '@/components/howtobook'
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -28,6 +29,7 @@ export default function Home() {
           <TrustedBy />
           <Testomonials />
           <Services />
+          <HowToBook />
           <AboutUs />
           <Pricing />
           <Faq />
