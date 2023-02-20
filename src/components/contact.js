@@ -75,16 +75,16 @@ export function ContactForm() {
             resParams,
             process.env.EMAILJS_PUBLIC_KEY
         ).then((response) => {
-            console.log("SUCCESS",response.status,response.text);
             setEmail("");
             setPhone("");
             setLocation("");
-            toast.success('Successfully sent the contact form.', { hideProgressBar: true, autoClose: 2000,position: "bottom-center" });
+            toast.success('Successfully sent the contact form.', { hideProgressBar: true, autoClose: 1500});
             setInterval(() => {
                 window.location.reload();
             },2000);
         }).catch((err) => {
             console.log("ERROR",err);
+            toast.error("Some Error Occured! Try Again",{hideProgressBar: true,autoClose: 1500})
         });
     }
 

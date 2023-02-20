@@ -12,13 +12,15 @@ import '@/styles/booking.css';
 import '@/styles/faq.css';
 import '@/styles/terms_and_conditions.css';
 import '@/styles/privacy-policy.css';
+import '@/styles/login.css';
 
 export default function App({ Component, pageProps }) {
+
   return (
   <>
     <Transition>
       <Navbar />
-      <Component {...pageProps} />
+      <Component {...pageProps}/>
       <ToastContainer />
       <Footer />
     </Transition>

@@ -49,15 +49,13 @@ function BookingForm() {
             bookingData,
             process.env.EMAILJS_PUBLIC_KEY
         ).then((response) => {
-            console.log("Successfully booked",response.status,response.text);
-            toast.success('Successfully Booked. Thank You.', { hideProgressBar: true, autoClose: 2000,position: "bottom-center" });
+            toast.success('Successfully Booked. Thank You.', { hideProgressBar: true, autoClose: 1500});
             setTimeout(() => {
                 window.location.reload();
             },2000);
 
         }).catch((err) => {
-            console.log("Errro",err);
-            toast.error('Some Error occurd. Try Again', { hideProgressBar: true, autoClose: 2000,position: "bottom-center" });
+            toast.error('Some Error occurd. Try Again', { hideProgressBar: true, autoClose: 1500});
             setTimeout(() => {
                 window.location.reload();
             },2000);

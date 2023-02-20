@@ -1,5 +1,4 @@
 import {FcBusinessContact,FcAssistant,FcCollaboration,FcApproval} from "react-icons/fc";
-import {RiNumber1} from "react-icons/ri"
 
 function HowToBook() {
     return (
