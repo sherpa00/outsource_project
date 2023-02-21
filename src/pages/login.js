@@ -1,10 +1,21 @@
-import { useState } from "react";
+import { useAuth } from "context/AuthContext";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 function Login() {
 
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
+
+    const {user,logIn} = useAuth();
+    const router = useRouter();
+
+    useEffect(() => {
+        if (user.uid) {
+            router.push("/dashboard");
+        }
+    },[router,user])
 
     const handleChangeEmail = (e) => {
         setEmail(e.target.value);
@@ -14,21 +25,26 @@ function Login() {
         setPassword(e.target.value);
     }
 
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
-        if (!password || password.length <= 0 || !email || email.length <= 0) {
-            toast.error("Soory !! Your Email/Password did not match.",{hideProgressBar: true,autoClose: 1500});
+        try {
+            if (!password || password.length <= 0 || !email || email.length <= 0) {
+                toast.error("Soory !! Your Email/Password did not match.",{hideProgressBar: true,autoClose: 1500});
+            } else {
+                await logIn(email,password);
+                router.push("/dashboard");
+                toast.success("You are successfully logged in",{hideProgressBar: true,autoClose: 1500});
+            }
             setEmail("");
             setPassword("");
-        } else {
-            let loginCred = {
-                email: email,
-                password: password
-            }
-            console.log(loginCred);
-            toast.success("You are successfully logged in",{hideProgressBar: true,autoClose: 1500});
+        } catch (err) {
+            console.log(err.message);
+            toast.error("Soory !! Your Email/Password did not match.",{hideProgressBar: true,autoClose: 1500})
+            setEmail("");
+            setPassword("");
         }
     }
+
     return (
         <div id="login_container">
             <h2>
