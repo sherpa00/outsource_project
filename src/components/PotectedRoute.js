@@ -1,22 +1,28 @@
-const { useAuth } = require("context/AuthContext");
-const { useRouter } = require("next/router");
-const { useEffect } = require("react");
+import { ProgressBar } from "react-loader-spinner";
+import { useAuth } from "context/AuthContext";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import FullPageLoader from "./fullPageLoader";
 
 function ProtectedRoute({children}) {
     
-    const {user} = useAuth();
+    const {user,loading} = useAuth();
     const router = useRouter();
 
     useEffect(() => {
-        if (!user.uid) {
+        if (!user.uid && !loading) {
             router.push("/login");
         }
-    },[router,user]);
+    },[router,user,loading]);
+
+    if (loading || !user.uid) {
+        return <FullPageLoader />
+    }
 
     return (
         <div>
             {
-                user ?   children : null
+                user ? children : null
             }
         </div>
     )

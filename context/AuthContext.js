@@ -44,9 +44,10 @@ export const AuthContextProvider = ({ children }) => {
         });
         await signOut(auth);
     }
+    
 
     return (
-        <AuthContext.Provider value={{user,logIn,logOut}}>
+        <AuthContext.Provider value={{user,logIn,logOut,loading}}>
             {loading ? null : children}
         </AuthContext.Provider>
     )

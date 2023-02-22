@@ -1,3 +1,4 @@
+import FullPageLoader from "@/components/fullPageLoader";
 import { useAuth } from "context/AuthContext";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -8,14 +9,14 @@ function Login() {
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
 
-    const {user,logIn} = useAuth();
+    const {user,loading,logIn} = useAuth();
     const router = useRouter();
 
     useEffect(() => {
-        if (user.uid) {
+        if (user.uid && !loading) {
             router.push("/dashboard");
         }
-    },[router,user])
+    },[router,user,loading])
 
     const handleChangeEmail = (e) => {
         setEmail(e.target.value);

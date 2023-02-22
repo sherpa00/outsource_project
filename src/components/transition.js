@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import { motion,AnimatePresence } from "framer-motion";
 const variants = {
     fadeIn: {
-      y: 0,
       opacity: 0,
       transition: {
         duration: 0.7,
@@ -11,7 +10,6 @@ const variants = {
     },
     inactive: {
       opacity: 1,
-      y: 0,
       transition: {
         duration: 0.7,
         ease: "easeInOut"
@@ -19,7 +17,6 @@ const variants = {
     },
     fadeOut: {
       opacity: 0,
-      y: 0,
       transition: {
         duration: 0.7,
         ease: "easeInOut"
@@ -36,9 +33,9 @@ const Transition = ({ children }) => {
                 <motion.div
                     key={asPath}
                     variants={variants}
-                    initial="fadeIn"
                     animate="inactive"
-                    exit="fadeOut"
+                    initial="fadeIn"
+                    exit="fadeOut"  
                 >
                         {children}
                 </motion.div>
