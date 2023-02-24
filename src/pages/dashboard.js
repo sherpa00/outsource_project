@@ -71,13 +71,13 @@ function Dashboard() {
   return (
     <ProtectedRoute>
       <div id="dashboard_container">
-        <h2>Welcome back admin </h2>{" "}
+        <h2>Welcome back admin </h2>
         <div id="btn_group">
-          <button>Check Orders </button>{" "}
-          <button onClick={hanldeLogOut}>Sign Out </button>{" "}
+          <button>Check Orders </button>
+          <button onClick={hanldeLogOut}>Sign Out </button>
         </div>
         <BookingDashboard />
-      </div>{" "}
+      </div>
     </ProtectedRoute>
   );
 }
@@ -87,9 +87,9 @@ function BookingDashboard() {
 
   return (
     <div id="booking_dashboard">
-      <h3>Orders Dashboard </h3>{" "}
+      <h3>Orders Dashboard </h3>
       <ul>
-        <h5>Customers </h5>{" "}
+        <h5>Customers </h5>
         <div id="dashboard_btns">
           <button
             id="accepted"
@@ -99,8 +99,8 @@ function BookingDashboard() {
               )
             }
           >
-            Accepted{" "}
-          </button>{" "}
+            Accepted
+          </button>
           <button
             id="rejected"
             onClick={() =>
@@ -109,8 +109,8 @@ function BookingDashboard() {
               )
             }
           >
-            Rejected{" "}
-          </button>{" "}
+            Rejected
+          </button>
           <button
             id="ongoing"
             onClick={() =>
@@ -119,8 +119,8 @@ function BookingDashboard() {
               )
             }
           >
-            OnGoing{" "}
-          </button>{" "}
+            OnGoing
+          </button>
           <button
             id="completed"
             onClick={() =>
@@ -129,75 +129,84 @@ function BookingDashboard() {
               )
             }
           >
-            Completed{" "}
-          </button>{" "}
-        </div>{" "}
+            Completed
+          </button>
+        </div>
       </ul>
-      <div id="order_table">
-        <table>
-          <thead>
-            <tr>
-              <th> Name </th> <th> Email, Phone </th> <th> Address </th>{" "}
-              <th> Time Period </th> <th> Package </th> <th> Status </th>{" "}
-              <th> Action </th>{" "}
-            </tr>{" "}
-          </thead>
 
-          <tbody>
-            {" "}
-            {bookingData.map((data, index) => {
-              return (
-                <SingleBooking
-                  key={data.id}
-                  name={data.name}
-                  email={data.email}
-                  phone={data.phone}
-                  address={data.address}
-                  ordered_on={data.ordered_on}
-                  complete_on={data.complete_on}
-                  package_type={data.package_type}
-                  status={data.status}
-                />
-              );
-            })}{" "}
-          </tbody>
-        </table>
-      </div>{" "}
+      <div id="order_container">
+        {
+            bookingData.map((data,index) => {
+                return <SingleOrder
+                            key={data.id}
+                            name={data.name}
+                            address={data.address}
+                            email={data.email}
+                            phone={data.phone}
+                            package_type={data.package_type}
+                            status={data.status}
+                            ordered_on={data.ordered_on}
+                            complete_on={data.complete_on}
+                        />
+            })
+        }
+      </div>
     </div>
   );
 }
 
-function SingleBooking({
-  name,
-  email,
-  phone,
-  address,
-  ordered_on,
-  complete_on,
-  package_type,
-  status,
-}) {
-  return (
-    <tr>
-      <td> {name} </td>{" "}
-      <td>
-        {" "}
-        {email} <br> </br> <br> </br> {phone}{" "}
-      </td>{" "}
-      <td> {address} </td>{" "}
-      <td>
-        {" "}
-        {ordered_on} <br> </br> <br> </br> {complete_on}{" "}
-      </td>{" "}
-      <td> {package_type} </td> <td id={status}> {status} </td>{" "}
-      <td id="table_btns">
-        <button id="accepted">Accept </button>{" "}
-        <button id="rejected">Reject </button>{" "}
-        <button id="ongoing">ongoing </button>{" "}
-        <button id="completed">completed </button>{" "}
-      </td>{" "}
-    </tr>
-  );
+function SingleOrder({name,address,email,phone,package_type,status,ordered_on,complete_on}) {
+    return (
+        <div className="single_order">
+            <p>
+                <strong>Name : </strong>
+                <span>{name}</span>
+            </p>
+            <p>
+                <strong>Address : </strong>
+                <span>{address}</span>
+            </p>
+            <p>
+                <strong>Email : </strong>
+                <span>{email}</span>
+            </p>
+            <p>
+                <strong>Phone No. : </strong>
+                <span>{phone}</span>
+            </p>
+            <p>
+                <strong>Package : </strong>
+                <span>{package_type}</span>
+            </p>
+            <p>
+                <strong>Status : </strong>
+                <span>{status}</span>
+            </p>
+            <p>
+                <strong>Date : </strong>
+                <span>{ordered_on} - {complete_on}</span>
+            </p>
+            <div id="actions_list">
+                <button id="accept">
+                    Accept
+                </button>
+                <button id="reject">
+                    Reject
+                </button>
+                <button id="ongoing">
+                    Ongoing
+                </button>
+                <button id="completed">
+                    Completed
+                </button>
+            </div>
+            <button id="delete_order">
+                Delete Order
+            </button>
+        </div>
+    )
 }
+
+
 
 export default Dashboard;
