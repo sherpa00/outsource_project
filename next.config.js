@@ -8,7 +8,7 @@ const nextConfig = {
     BOOKING_TEMPLATE_ID: "template_7dh8i8p",
     FIREBASE_APIKEY: "AIzaSyAA3vz_ZADwBscYwjXya4ceQw6-aiTwy84",
     FIREBASE_PROJECTID: "outsource-project-2d2f1",
-    FIREBASE_APPID: "1:397646804191:web:fd74271ab6078efc5fe56a"
+    FIREBASE_APPID: "1:397646804191:web:fd74271ab6078efc5fe56a",
   }
 }
 

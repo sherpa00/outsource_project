@@ -1,55 +1,11 @@
 import ProtectedRoute from "@/components/PotectedRoute";
 import { useAuth } from "context/AuthContext";
+import { db } from "firebase.configs";
+import { collection, deleteDoc, doc, getDoc, getDocs, setDoc } from "firebase/firestore";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-
-const BookingData = [
-  {
-    name: "chawang sherpa",
-    email: "cha@gmail.com",
-    phone: "9802490930",
-    address: "west-gate-10,sydney",
-    status: "accepted",
-    package_type: "Basic",
-    ordered_on: "2020-20-20",
-    complete_on: "2020-20-28",
-    id: 1,
-  },
-  {
-    name: "wangche sherpa",
-    email: "wangcha@gmail.com",
-    phone: "9802490930",
-    address: "west-gate-10,melbourne",
-    status: "ongoing",
-    package_type: "Basic",
-    ordered_on: "2020-20-20",
-    complete_on: "2020-20-28",
-    id: 2,
-  },
-  {
-    name: "pasnag sherpa",
-    email: "pasang@gmail.com",
-    phone: "9802490930",
-    address: "west-10,sydney",
-    status: "completed",
-    package_type: "Premium",
-    ordered_on: "2020-20-20",
-    complete_on: "2020-20-28",
-    id: 3,
-  },
-  {
-    name: "neonal rhai",
-    email: "nionl@gmail.com",
-    phone: "9802490930",
-    address: "west-gate-10,sydney",
-    status: "rejected",
-    package_type: "Basic",
-    ordered_on: "2020-20-20",
-    complete_on: "2020-20-28",
-    id: 4,
-  },
-];
+import {FaRegSadCry} from "react-icons/fa";
 
 function Dashboard() {
   const { logOut } = useAuth();
@@ -73,7 +29,7 @@ function Dashboard() {
       <div id="dashboard_container">
         <h2>Welcome back admin </h2>
         <div id="btn_group">
-          <button>Check Orders </button>
+          <button onClick={() => window.location.reload()}>Refresh</button>
           <button onClick={hanldeLogOut}>Sign Out </button>
         </div>
         <BookingDashboard />
@@ -83,7 +39,127 @@ function Dashboard() {
 }
 
 function BookingDashboard() {
-  const [bookingData, setBookingData] = useState(BookingData);
+  const [bookingData, setBookingData] = useState([]);
+  const [filteredBookingData,setFilteredBookingData] = useState([]);
+
+  useEffect(() => {
+    // fetch the bookings
+    const getBookingData = async () => {
+        try {
+            let results = [];
+            let querySnapShot = await getDocs(collection(db,"bookings"));
+            querySnapShot.forEach((doc) => {
+                results.push(
+                    {
+                        ...doc.data(),
+                        id: doc.id
+                    }
+                );
+            });
+            setBookingData(results);
+            setFilteredBookingData(results);
+        } catch (err) {
+            toast.error(err.message,{hideProgressBar: true,autoClose: 15000})
+        }
+    }
+    getBookingData();
+  },[]);
+
+  useEffect(() => {
+    setFilteredBookingData(bookingData);
+  },[bookingData])
+
+  // update booking status to "accepted"
+  const updateStatus = async (status,id) => {
+    // first find the booking data having the id
+    let resultDataIndex = bookingData.findIndex(data => data.id === id);
+
+    if (resultDataIndex <= -1) {
+        return;
+    }
+
+    switch (status) {
+        case "accepted":
+            // set doc.status to accepted
+            try {
+                await setDoc(doc(db,"bookings",id),{
+                    status: status
+                },{merge: true});
+                let tempData = bookingData[resultDataIndex];
+                tempData.status = status;
+                let tempBookingData = bookingData;
+                tempBookingData.splice(resultDataIndex,1,tempData);
+                setBookingData([...tempBookingData]);
+                toast.success("Succesfully updated to status: Accepted",{hideProgressBar: true,autoClose: 1500});
+                break;
+            } catch (err) {
+                toast.error(err.message,{hideProgressBar: true,autoClose: 15000})
+            }
+        case "rejected":
+            // set doc.status to accepted
+            try {
+                await setDoc(doc(db,"bookings",id),{
+                    status: status
+                },{merge: true});
+                let tempData = bookingData[resultDataIndex];
+                tempData.status = status;
+                let tempBookingData = bookingData;
+                tempBookingData.splice(resultDataIndex,1,tempData);
+                setBookingData([...tempBookingData]);
+                toast.success("Succesfully updated to status: Rejected",{hideProgressBar: true,autoClose: 1500});
+                break;
+            } catch (err) {
+                toast.error(err.message,{hideProgressBar: true,autoClose: 15000})
+            }
+        case "ongoing":
+            // set doc.status to accepted
+            try {
+                await setDoc(doc(db,"bookings",id),{
+                    status: status
+                },{merge: true});
+                let tempData = bookingData[resultDataIndex];
+                tempData.status = status;
+                let tempBookingData = bookingData;
+                tempBookingData.splice(resultDataIndex,1,tempData);
+                setBookingData([...tempBookingData]);
+                toast.success("Succesfully updated to status: Ongoing",{hideProgressBar: true,autoClose: 1500});
+                break;
+            } catch (err) {
+                toast.error(err.message,{hideProgressBar: true,autoClose: 15000})
+            }
+        case "completed":
+            // set doc.status to accepted
+            try {
+                await setDoc(doc(db,"bookings",id),{
+                    status: status
+                },{merge: true});
+                let tempData = bookingData[resultDataIndex];
+                tempData.status = status;
+                let tempBookingData = bookingData;
+                tempBookingData.splice(resultDataIndex,1,tempData);
+                setBookingData([...tempBookingData]);
+                toast.success("Succesfully updated to status: Completed",{hideProgressBar: true,autoClose: 1500});
+                break;
+            } catch (err) {
+                toast.error(err.message,{hideProgressBar: true,autoClose: 15000})
+            }
+        default:
+            toast.error("Cannot update status right now.",{hideProgressBar: true,autoClose: 15000})
+    }
+  }
+
+  // delete booking orders
+  const deleteBooking = async (id) => {
+    try {
+        // here delete the doc booking order by id
+        await deleteDoc(doc(db,"bookings",id));
+        let newBookingData = bookingData.filter(data => data.id !== id);
+        setBookingData(newBookingData);
+        toast.success("Succefully Deleted the Booking Order",{hideProgressBar: true,autoClose: 1500});
+    } catch (err) {
+        toast.error(err.message,{hideProgressBar: true,autoClose: 15000})
+    }
+  }
 
   return (
     <div id="booking_dashboard">
@@ -94,8 +170,8 @@ function BookingDashboard() {
           <button
             id="accepted"
             onClick={() =>
-              setBookingData(
-                BookingData.filter((data) => data.status === "accepted")
+              setFilteredBookingData(
+                bookingData.filter((data) => data.status === "accepted")
               )
             }
           >
@@ -104,8 +180,8 @@ function BookingDashboard() {
           <button
             id="rejected"
             onClick={() =>
-              setBookingData(
-                BookingData.filter((data) => data.status === "rejected")
+              setFilteredBookingData(
+                bookingData.filter((data) => data.status === "rejected")
               )
             }
           >
@@ -114,8 +190,8 @@ function BookingDashboard() {
           <button
             id="ongoing"
             onClick={() =>
-              setBookingData(
-                BookingData.filter((data) => data.status === "ongoing")
+              setFilteredBookingData(
+                bookingData.filter((data) => data.status === "ongoing")
               )
             }
           >
@@ -124,8 +200,8 @@ function BookingDashboard() {
           <button
             id="completed"
             onClick={() =>
-              setBookingData(
-                BookingData.filter((data) => data.status === "completed")
+              setFilteredBookingData(
+                bookingData.filter((data) => data.status === "completed")
               )
             }
           >
@@ -136,9 +212,18 @@ function BookingDashboard() {
 
       <div id="order_container">
         {
-            bookingData.map((data,index) => {
+            filteredBookingData.length <= 0 ? <h4 id="empty">
+                <span>
+                    <FaRegSadCry />
+                </span>
+                <br></br>
+                You Have no Bookings so far
+            </h4> :
+
+            filteredBookingData.map((data,index) => {
                 return <SingleOrder
-                            key={data.id}
+                            key={index}
+                            id={data.id}
                             name={data.name}
                             address={data.address}
                             email={data.email}
@@ -147,6 +232,8 @@ function BookingDashboard() {
                             status={data.status}
                             ordered_on={data.ordered_on}
                             complete_on={data.complete_on}
+                            onUpdateStatus={updateStatus}
+                            onDeleteBooking={deleteBooking}
                         />
             })
         }
@@ -155,9 +242,19 @@ function BookingDashboard() {
   );
 }
 
-function SingleOrder({name,address,email,phone,package_type,status,ordered_on,complete_on}) {
+function SingleOrder({name,id,address,email,phone,package_type,status,ordered_on,complete_on,onUpdateStatus,onDeleteBooking}) {
+
+    const updateToStatus = (e) => {
+        let newStatus = e.target.value;
+        onUpdateStatus(newStatus,id);
+    }
+
+    const deleteSingleBooking = () => {
+        onDeleteBooking(id);
+    }
+
     return (
-        <div className="single_order">
+        <div className={"single_order" + " " + status}>
             <p>
                 <strong>Name : </strong>
                 <span>{name}</span>
@@ -187,20 +284,20 @@ function SingleOrder({name,address,email,phone,package_type,status,ordered_on,co
                 <span>{ordered_on} - {complete_on}</span>
             </p>
             <div id="actions_list">
-                <button id="accept">
+                <button id="accept" value="accepted" onClick={updateToStatus}>
                     Accept
                 </button>
-                <button id="reject">
+                <button id="reject" value="rejected" onClick={updateToStatus}>
                     Reject
                 </button>
-                <button id="ongoing">
+                <button id="ongoing" value="ongoing" onClick={updateToStatus}>
                     Ongoing
                 </button>
-                <button id="completed">
+                <button id="completed" value="completed" onClick={updateToStatus}>
                     Completed
                 </button>
             </div>
-            <button id="delete_order">
+            <button id="delete_order" onClick={deleteSingleBooking}>
                 Delete Order
             </button>
         </div>

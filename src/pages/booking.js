@@ -1,6 +1,8 @@
 import { useRef, useState } from "react";
 import { toast } from "react-toastify";
 import emailjs from "@emailjs/browser";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "firebase.configs";
 
 function Booking() {
     return (
@@ -27,10 +29,15 @@ function BookingForm() {
     const [date,setDate] = useState("");
     const [info,setInfo] = useState("");
 
+    const [loading,setLoading] = useState(false);
+
     const packageRef = useRef();
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        
+        setLoading(true);
+
         let bookingData = {
             from_name: fullname,
             from_address: address,
@@ -48,18 +55,38 @@ function BookingForm() {
             process.env.BOOKING_TEMPLATE_ID,
             bookingData,
             process.env.EMAILJS_PUBLIC_KEY
-        ).then((response) => {
-            toast.success('Successfully Booked. Thank You.', { hideProgressBar: true, autoClose: 1500});
-            setTimeout(() => {
-                window.location.reload();
-            },2000);
+        ).then( async (response) => {
+            try {
+                // add the booking 
+                const docRef = await addDoc(collection(db,"bookings"), {
+                    name: fullname,
+                    email: email,
+                    phone: phone,
+                    address: address,
+                    package_type: packageRef.current.value,
+                    status: "ongoing",
+                    ordered_on: date,
+                    complete_on: new Date().toLocaleDateString(),
+                    additional_info: info
+                });
 
+                toast.success('Successfully Booked. Thank You.', { hideProgressBar: true, autoClose: 1500});
+
+            } catch (error) {
+                console.log(error.message);
+            }
         }).catch((err) => {
             toast.error('Some Error occurd. Try Again', { hideProgressBar: true, autoClose: 1500});
-            setTimeout(() => {
-                window.location.reload();
-            },2000);
-        })
+        });
+        setFullname("");
+        setEmail("")
+        setAddress("");
+        setDate("");
+        setInfo("");
+        setPhone("");
+        packageRef.current.value = "";
+
+        setLoading(false);
     }
 
     return (
@@ -116,7 +143,9 @@ function BookingForm() {
             <textarea type="text" id="info" name="info" value={info} onChange={(e) => setInfo(e.target.value)} placeholder="here goes some of your additional info to us.." required />
 
             <button type="submit">
-                Submit Booking
+                {
+                    loading ? "loading..." : "Send Booking"
+                }
             </button>
         </form>
     )
