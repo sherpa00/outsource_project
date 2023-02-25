@@ -6,6 +6,8 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import {FaRegSadCry} from "react-icons/fa";
+import {BiDollarCircle,BiGroup,BiShoppingBag} from "react-icons/bi";
+import {MdOutlineMiscellaneousServices} from "react-icons/md";
 
 function Dashboard() {
   const { logOut } = useAuth();
@@ -32,6 +34,7 @@ function Dashboard() {
           <button onClick={() => window.location.reload()}>Refresh</button>
           <button onClick={hanldeLogOut}>Sign Out </button>
         </div>
+        <Charts />
         <BookingDashboard />
       </div>
     </ProtectedRoute>
@@ -91,10 +94,11 @@ function BookingDashboard() {
                 tempBookingData.splice(resultDataIndex,1,tempData);
                 setBookingData([...tempBookingData]);
                 toast.success("Succesfully updated to status: Accepted",{hideProgressBar: true,autoClose: 1500});
-                break;
+                
             } catch (err) {
                 toast.error(err.message,{hideProgressBar: true,autoClose: 15000})
             }
+            break;
         case "rejected":
             // set doc.status to accepted
             try {
@@ -107,10 +111,11 @@ function BookingDashboard() {
                 tempBookingData.splice(resultDataIndex,1,tempData);
                 setBookingData([...tempBookingData]);
                 toast.success("Succesfully updated to status: Rejected",{hideProgressBar: true,autoClose: 1500});
-                break;
+                
             } catch (err) {
                 toast.error(err.message,{hideProgressBar: true,autoClose: 15000})
             }
+            break;
         case "ongoing":
             // set doc.status to accepted
             try {
@@ -123,10 +128,11 @@ function BookingDashboard() {
                 tempBookingData.splice(resultDataIndex,1,tempData);
                 setBookingData([...tempBookingData]);
                 toast.success("Succesfully updated to status: Ongoing",{hideProgressBar: true,autoClose: 1500});
-                break;
+                
             } catch (err) {
                 toast.error(err.message,{hideProgressBar: true,autoClose: 15000})
             }
+            break;
         case "completed":
             // set doc.status to accepted
             try {
@@ -139,12 +145,14 @@ function BookingDashboard() {
                 tempBookingData.splice(resultDataIndex,1,tempData);
                 setBookingData([...tempBookingData]);
                 toast.success("Succesfully updated to status: Completed",{hideProgressBar: true,autoClose: 1500});
-                break;
+                
             } catch (err) {
                 toast.error(err.message,{hideProgressBar: true,autoClose: 15000})
             }
+            break
         default:
-            toast.error("Cannot update status right now.",{hideProgressBar: true,autoClose: 15000})
+            toast.error("Cannot update status right now.",{hideProgressBar: true,autoClose: 15000});
+            break;
     }
   }
 
@@ -305,5 +313,80 @@ function SingleOrder({name,id,address,email,phone,package_type,status,ordered_on
 }
 
 
+function Charts() {
+
+  const TopChartData = [
+    {
+      title: "TOTAL SALES",
+      value: "$14000",
+      color: "lightcoral",
+      icon: <BiDollarCircle color="#eee"/>
+    },
+    {
+      title: "TOTAL ORDERS",
+      value: "5000",
+      color: "steelblue",
+      icon: <BiShoppingBag />
+    },
+    {
+      title: "TOTAL CLIENTS",
+      value: "1200",
+      color: "purple",
+      icon: <BiGroup />
+    },
+    {
+      title: "TOTAL SERVICES",
+      value: "10",
+      color: "limegreen",
+      icon: <MdOutlineMiscellaneousServices />
+    },
+  ]
+
+  return (
+    <div id="chart_container">
+      <div id="top_charts">
+        {
+          TopChartData.map((data,index) => {
+            return <SingleTopChart
+                      key={index}
+                      title={data.title}
+                      value={data.value}
+                      color={data.color}
+                      icon={data.icon}
+                    />
+          })
+        }
+      </div>
+    </div>
+  )
+}
+
+function SingleTopChart({title,value,color,icon}) {
+
+  let customBgStyles = {
+    backgroundColor: `${color}`,
+    color: "whitesmoke"
+  };
+
+  let customFontStyles = {
+    color: `${color}`
+  }
+
+  return (
+    <div className="single_top_chart">
+          <div id="chart_icon" style={customBgStyles}>
+            {icon}
+          </div>
+          <div id="chart_info">
+            <span style={customFontStyles}>
+              {title}
+            </span>
+            <strong>
+              {value}
+            </strong>
+          </div>
+      </div>
+  )
+}
 
 export default Dashboard;
