@@ -235,6 +235,7 @@ div.single_order button#delete_order:hover {
 div#chart_container {
     width: 100%;
     margin: 80px auto;
+    padding: 0;
 }
 
 div#chart_container div#top_charts {
@@ -293,6 +294,53 @@ div#chart_info strong {
     font-size: 24px;
     color: #443;
     text-align: left;
+}
+
+/* _________________ bottom charts ______________ */
+div#bottom_charts {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 80px 0px;
+    margin-bottom: -60px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+div#bottom_charts div#line_bar {
+    width: 65%;
+    height: 400px;
+    font-size: 20px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+    gap: 8px;
+}
+ div#line_bar h3 {
+    font-size: 20px;
+    color: #222;
+    text-align: left;
+ }
+
+div#bottom_charts div#doughnut_bar {
+    width: 35%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+div#doughnut_bar h3 {
+    font-size: 20px;
+    color: #222;
+    text-align: center;
+    margin: auto
 }
 
 @media screen and (max-width: 1200px) {
@@ -384,6 +432,30 @@ div#chart_info strong {
 
     div#chart_info strong {
         font-size: 22px;
+    }
+
+    /* _________________ bottom charts ______________ */
+    div#bottom_charts {
+        padding: 70px 0px;
+        margin-bottom: -50px;
+    }
+
+    div#bottom_charts div#line_bar {
+        font-size: 18px;
+        gap: 7px;
+        height: 300px;
+    }
+    div#line_bar h3 {
+        font-size: 18px
+    }
+
+    div#bottom_charts div#doughnut_bar {
+        gap: 7px;
+        height: 300px;
+    }
+
+    div#doughnut_bar h3 {
+        font-size: 18px;
     }
 }
 
@@ -491,6 +563,32 @@ div#chart_info strong {
 
     div#chart_info strong {
         font-size: 20px;
+    }
+
+    /* _________________ bottom charts ______________ */
+    div#bottom_charts {
+        padding: 60px 0px;
+        margin-bottom: -40px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    div#bottom_charts div#line_bar {
+        font-size: 16px;
+        gap: 5px;
+        height: 190px;
+    }
+    div#line_bar h3 {
+        font-size: 16px
+    }
+
+    div#bottom_charts div#doughnut_bar {
+        gap: 5px;
+        height: 190px;
+    }
+
+    div#doughnut_bar h3 {
+        font-size: 16px;
     }
 }
 
@@ -600,11 +698,53 @@ div#chart_info strong {
     }
 
     div#chart_info span {
-        font-size: 14px;
+        font-size: 12px;
     }
 
     div#chart_info strong {
-        font-size: 18px;
+        font-size: 16px;
+    }
+
+    /* _________________ bottom charts ______________ */
+    div#bottom_charts {
+        padding: 60px 0px;
+        margin-bottom: -40px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+    }
+
+    div#bottom_charts div#line_bar {
+        font-size: 16px;
+        gap: 5px;
+        width: 100%;
+        height: auto;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+    }
+
+    div#bottom_charts div#line_bar #linebar {
+        width: 100%;
+    }
+
+    div#line_bar h3 {
+        font-size: 14px
+    }
+
+    div#bottom_charts div#doughnut_bar {
+        gap: 5px;
+        width: 70%;
+        height: auto;
+    }
+
+    div#bottom_charts div#doughnut_bar div#doughnutbar {
+        width: 100%;
+    }
+
+    div#doughnut_bar h3 {
+        font-size: 14px;
     }
 
 }

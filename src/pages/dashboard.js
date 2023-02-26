@@ -3,11 +3,13 @@ import { useAuth } from "context/AuthContext";
 import { db } from "firebase.configs";
 import { collection, deleteDoc, doc, getDoc, getDocs, setDoc } from "firebase/firestore";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { createRef, useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
 import {FaRegSadCry} from "react-icons/fa";
 import {BiDollarCircle,BiGroup,BiShoppingBag} from "react-icons/bi";
 import {MdOutlineMiscellaneousServices} from "react-icons/md";
+import Chart from "chart.js/auto";
+import { Line,Doughnut } from "react-chartjs-2";
 
 function Dashboard() {
   const { logOut } = useAuth();
@@ -80,7 +82,6 @@ function BookingDashboard() {
     if (resultDataIndex <= -1) {
         return;
     }
-
     switch (status) {
         case "accepted":
             // set doc.status to accepted
@@ -93,8 +94,7 @@ function BookingDashboard() {
                 let tempBookingData = bookingData;
                 tempBookingData.splice(resultDataIndex,1,tempData);
                 setBookingData([...tempBookingData]);
-                toast.success("Succesfully updated to status: Accepted",{hideProgressBar: true,autoClose: 1500});
-                
+                toast.success("Succesfully updated to status: Accepted",{hideProgressBar: true,autoClose: 1500}); 
             } catch (err) {
                 toast.error(err.message,{hideProgressBar: true,autoClose: 15000})
             }
@@ -168,6 +168,8 @@ function BookingDashboard() {
         toast.error(err.message,{hideProgressBar: true,autoClose: 15000})
     }
   }
+
+  //confirm box modifications
 
   return (
     <div id="booking_dashboard">
@@ -357,6 +359,10 @@ function Charts() {
           })
         }
       </div>
+      <div id="bottom_charts">
+        <LineBar />
+        <DoughnutBar />
+      </div>
     </div>
   )
 }
@@ -386,6 +392,69 @@ function SingleTopChart({title,value,color,icon}) {
             </strong>
           </div>
       </div>
+  )
+}
+
+function LineBar() {
+
+  const randomArr = [];
+  for (let i = 0; i <= 12; i++) {
+    let rand = Math.floor(Math.random() * 200);
+    randomArr.push(rand);
+  }
+
+  const data = {
+    labels: ['Jan','Feb','Mar',"Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
+    datasets: [
+      {
+        label: "First Dataset",
+        data: randomArr,
+        fill: true,
+        backgroundColor: "skyblue",
+        tension: 0.2
+      }
+    ]
+  }
+
+  return (
+    <div id="line_bar">
+      <h3>
+        Sales Analytics
+      </h3>
+      <Line data={data} id="linebar"/>
+    </div>
+  )
+}
+
+function DoughnutBar() {
+
+  const data = {
+    labels: [
+      'Basic',
+      'Standard',
+      'Premium'
+    ],
+    datasets: [
+      {
+        label: 'All Around',
+        data: [300, 50, 100],
+        backgroundColor: [
+          'rgb(255, 99, 132)',
+          'rgb(54, 162, 235)',
+          'rgb(255, 205, 86)'
+        ],
+        hoverOffset: 4
+    }
+  ]
+  };
+
+  return (
+    <div id="doughnut_bar">
+      <h3>
+        Package Consumptions
+      </h3>
+      <Doughnut data={data} id="doughnutbar"/>
+    </div>
   )
 }
 
