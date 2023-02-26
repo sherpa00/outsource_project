@@ -1,4 +1,4 @@
-import FullPageLoader from "@/components/fullPageLoader";
+
 import { useAuth } from "context/AuthContext";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -9,14 +9,8 @@ function Login() {
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
 
-    const {user,loading,logIn} = useAuth();
+    const {logIn} = useAuth();
     const router = useRouter();
-
-    useEffect(() => {
-        if (user.uid && !loading) {
-            router.push("/dashboard");
-        }
-    },[router,user,loading])
 
     const handleChangeEmail = (e) => {
         setEmail(e.target.value);
@@ -39,7 +33,6 @@ function Login() {
             setEmail("");
             setPassword("");
         } catch (err) {
-            console.log(err.message);
             toast.error("Soory !! Your Email/Password did not match.",{hideProgressBar: true,autoClose: 1500})
             setEmail("");
             setPassword("");

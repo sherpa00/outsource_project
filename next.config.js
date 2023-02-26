@@ -7,6 +7,10 @@ const nextConfig = {
     EMAILJS_PUBLIC_KEY:"sw-wuVbPU_RofPtBh",
     BOOKING_TEMPLATE_ID: "template_7dh8i8p",
     FIREBASE_APIKEY: "AIzaSyAA3vz_ZADwBscYwjXya4ceQw6-aiTwy84",
+    FIREBASE_AUTHDOMAIN: "outsource-project-2d2f1.firebaseapp.com",
+    FIREBASE_BUCKET: "outsource-project-2d2f1.appspot.com",
+    FIREBASE_SENDERID: "397646804191",
+    FIREBASE_MEASUREMENTID: "G-LYSK8951WX",
     FIREBASE_PROJECTID: "outsource-project-2d2f1",
     FIREBASE_APPID: "1:397646804191:web:fd74271ab6078efc5fe56a",
   }
