@@ -1,28 +1,49 @@
 import {FaQuoteLeft,FaQuoteRight} from "react-icons/fa"
 import {BsPersonCircle,BsArrowLeftCircle,BsArrowRightCircle} from "react-icons/bs";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useAnimation,motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 
 const reviewData = [
     {
         text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis non turpis sapien. Curabitur in metus non lorem ultricies convallis quis ut orci. Maecenas scelerisque felis in ex placerat, vitae dapibus arcu tincidunt. In molestie massa in ex condimentum, sit amet consectetur ipsum eleifend. Donec eros felis, vulputate eu magna id, accumsan egestas ex. Curabitur volutpat nec nisl et vestibulum. Aliquam convallis, diam vitae mattis iaculis, nunc dui auctor neque, bibendum fringilla nisi neque lacinia elit nay esto asfkjfd fd saftay echo lamina.",
         name: "Mr. Smith roy",
-        company: "Nicecompany.co"
+        company: "Nicecompany.co",
+        id: 1
     },
     {
         text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis non turpis sapien. Curabitur in metus non lorem ultricies convallis quis ut orci. Maecenas scelerisque felis in ex placerat, vitae dapibus arcu tincidunt. In molestie massa in ex condimentum, sit amet consectetur ipsum eleifend. Donec eros felis, vulputate eu magna id, accumsan egestas ex. Curabitur volutpat nec nisl et vestibulum. Aliquam convallis, diam vitae mattis iaculis, nunc dui auctor neque, bibendum fringilla nisi neque lacinia elit. Proin facilisis in arcu vel vehicula.",
         name: "Mr. Wilson liak",
-        company: "company-shy.co"
+        company: "company-shy.co",
+        id: 2
     },
     {
         text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis non turpis sapien. Curabitur in metus non lorem ultricies convallis quis ut orci. Maecenas scelerisque felis in ex placerat, vitae dapibus arcu tincidunt. In molestie massa in ex condimentum, sit amet consectetur ipsum eleifend. Donec eros felis, vulputate eu magna id, accumsan egestas ex. Curabitur volutpat nec nisl et vestibulum. Aliquam convallis, diam vitae mattis iaculis, nunc dui auctor neque, bibendum fringilla nisi neque lacinia elit. Proin facilisis in arcu",
         name: "Mrs. Rihna lin",
-        company: "company.co"
+        company: "company.co",
+        id: 3
     }
 ]
 
 function Testomonials() {
     const [index,setIndex] = useState(0);
+
+    const control = useAnimation();
+    const [ref,inView] = useInView();
+
+    const animationVariants = {
+        hidden: {opacity: 0},
+        visible: {opacity: 1,transition: {duration: 1,delay: 0.2}}
+    }
+
+    useEffect(() => {
+        if (inView) {
+            control.start("visible");
+        } else {
+            control.start("hidden");
+        }
+    },[control,inView]);
 
     const handleGetPrev = () => {
         if (index <= 0) {
@@ -41,9 +62,15 @@ function Testomonials() {
     }
 
     return (
-        <div id="testomonials_container">
+        <div id="testomonials_container" >
             <h2>Our Testomonials</h2>
-            <div id="testomonials_list">
+            <motion.div 
+                id="testomonials_list"
+                ref={ref}
+                variants={animationVariants}
+                animate={control}
+                initial="hidden"
+            >
                 <SingleReview 
                     text={reviewData[index].text}
                     name={reviewData[index].name}
@@ -51,7 +78,7 @@ function Testomonials() {
                     onGetPrev={handleGetPrev}
                     onGetNext={handleGetNext}
                 />
-            </div>
+            </motion.div>
         </div>
     )
 }

@@ -1,0 +1,756 @@
+div#dashboard_container {
+    background-color: whitesmoke;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 30px;
+    padding-top: 130px;
+    padding-bottom: 50px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+div#dashboard_container h2 {
+    font-size: 50px;
+    font-weight: 600;
+    margin: 10px 0px;
+    text-align: left;
+    font-family: var(--primary-font);
+}
+
+div#dashboard_container div#btn_group {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+div#dashboard_container button {
+    width: 180px;
+    font-size: 20px;
+    padding: 10px 0px;
+    cursor: pointer;
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    transition-duration: 400ms;
+    transition-timing-function: ease-in-out;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+div#dashboard_container button:hover {
+    background-color: whitesmoke;
+}
+
+div#booking_dashboard {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 50px auto;
+    background-color: #eee;
+    padding: 20px;
+    border-radius: 10px;
+    gap: 50px;
+}
+
+div#booking_dashboard h3 {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+div#booking_dashboard ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+div#booking_dashboard ul h5 {
+    font-size: 22px;
+    font-weight: 500;
+    color: #333;
+}
+
+div#booking_dashboard ul div#dashboard_btns {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+div#dashboard_btns button {
+    font-size: 18px;
+    width: auto;
+    padding: 5px 15px;
+    color: #333;
+}
+
+div#dashoard_btns button:hover {
+    transform: scale(0.95);
+}
+
+div#dashboard_btns button#accepted {
+    background-color: lightgreen;
+}
+div#dashboard_btns button#accepted:hover {
+    background-color: whitesmoke;
+    transform: scale(0.95);
+}
+div#dashboard_btns button#rejected {
+    background-color: brown;
+}
+div#dashboard_btns button#rejected:hover {
+    background-color: whitesmoke;
+    transform: scale(0.95);
+}
+div#dashboard_btns button#ongoing {
+    background-color: skyblue;
+}
+div#dashboard_btns button#ongoing:hover {
+    background-color: whitesmoke;
+    transform: scale(0.95);
+}
+div#dashboard_btns button#completed {
+    background-color: orange;
+}
+div#dashboard_btns button#completed:hover {
+    background-color: whitesmoke;
+    transform: scale(0.95);
+}
+
+div#order_container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: auto auto auto;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    gap: 20px;
+}
+
+div#order_container h4#empty {
+    color: #444;
+    font-size: 18px;
+    text-align: center;
+}
+
+div#order_container h4#empty span {
+    color: #332;
+    font-size: 26px;
+    text-align: center;
+}
+
+div#order_container div.single_order {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    border: 5px solid gray;
+    cursor: pointer;
+    height: 290px;
+    overflow-y: hidden;
+    transition-duration: 400ms;
+    transition-timing-function: ease-in-out;
+}
+
+div#order_container div.accepted {
+    border: 5px solid lightgreen
+}
+div#order_container div.rejected {
+    border: 5px solid brown
+}
+div#order_container div.ongoing {
+    border: 5px solid lightblue
+}
+div#order_container div.completed {
+    border: 5px solid orange
+}
+
+div.single_order p {
+    font-size: 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+    gap: 10px;
+    margin: 8px 0px;
+    word-break: break-all;
+}
+
+div.single_order div#actions_list {
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 20px auto;
+}
+
+div.single_order div#actions_list button {
+    font-size: 16px;
+    width: auto;
+    padding: 5px 15px;
+    border-radius: 10px;
+}
+
+div.single_order div#actions_list > button#accept {
+    background-color: lightgreen;
+}
+div.single_order div#actions_list > button#accept:hover {
+    background-color: whitesmoke;
+}
+div.single_order div#actions_list > button#reject {
+    background-color: brown;
+}
+div.single_order div#actions_list > button#reject:hover {
+    background-color: whitesmoke;
+}
+div.single_order div#actions_list > button#ongoing {
+    background-color: lightblue;
+}
+div.single_order div#actions_list > button#ongoing:hover {
+    background-color: whitesmoke;
+}
+div.single_order div#actions_list > button#completed {
+    background-color: orange;
+}
+div.single_order div#actions_list > button#completed:hover {
+    background-color: whitesmoke;
+}
+
+div.single_order button#delete_order {
+    font-size: 16px;
+    width: 100%;
+    padding: 8px 10px;
+    margin: 10px auto;
+    margin-top: 20px;
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+div.single_order button#delete_order:hover {
+    background-color: whitesmoke;
+}
+
+/* __________________ charts ________________ */
+div#chart_container {
+    width: 100%;
+    margin: 80px auto;
+    padding: 0;
+}
+
+div#chart_container div#top_charts {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+div#top_charts div.single_top_chart {
+    width: 23vw;
+    height: 130px;
+    background-color: #ddd;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+div.single_top_chart div#chart_icon {
+    width: 35%;
+    height: 100%;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    color: #eee;
+    font-weight: 800;
+    padding: 0px 10px;
+}
+
+
+div.single_top_chart div#chart_info {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+    margin: auto;
+    padding: 0px 10px;
+}
+
+div#chart_info span {
+    font-size: 20px;
+    font-weight: 600;
+    color: #eee;
+}
+
+div#chart_info strong {
+    font-size: 24px;
+    color: #443;
+    text-align: left;
+}
+
+/* _________________ bottom charts ______________ */
+div#bottom_charts {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 80px 0px;
+    margin-bottom: -60px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+div#bottom_charts div#line_bar {
+    width: 65%;
+    height: 400px;
+    font-size: 20px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+    gap: 8px;
+}
+ div#line_bar h3 {
+    font-size: 20px;
+    color: #222;
+    text-align: left;
+ }
+
+div#bottom_charts div#doughnut_bar {
+    width: 35%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+div#doughnut_bar h3 {
+    font-size: 20px;
+    color: #222;
+    text-align: center;
+    margin: auto
+}
+
+@media screen and (max-width: 1200px) {
+
+    div#dashboard_container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    div#dashboard_container h2 {
+        font-size: 40px;
+    }
+
+    div#dashboard_container div#btn_group button {
+        font-size: 18px;
+        width: 170px;
+    }
+
+    div#booking_dashboard {
+        padding: 25px;
+        gap: 45px;
+    }
+
+    div#booking_dashboard h3 {
+        font-size: 26px;
+    }
+
+    div#booking_dashboard ul h5 {
+        font-size: 20px;
+    }
+
+    div#booking_dashboard ul div#dashboard_btns button {
+        font-size: 16px;
+        padding: 5px 13px;
+    }
+
+    div#booking_dashboard ul div#dashboard_btns {
+        display: grid;
+        grid-template-columns: auto auto;
+    }
+
+    div#order_container {
+        grid-template-columns: auto auto auto;
+    }
+
+    div.single_order {
+        padding: 13px;
+    }
+
+    div.single_order p {
+        font-size: 16px;
+    }
+
+    div.single_order div#actions_list button {
+        font-size: 16px;
+        padding: 5px 10px;
+    }
+
+    div.single_order button#delete_order {
+        font-size: 16px;
+    }
+
+    /* __________________ charts ________________ */
+    div#chart_container {
+        margin: 60px auto;
+    }
+
+    div#chart_container div#top_charts {
+        grid-template-columns: auto auto auto auto;
+    }
+
+    div#top_charts div.single_top_chart {
+        width: 23vw;
+        height: 110px;
+    }
+
+    div.single_top_chart div#chart_icon {
+        font-size: 30px;
+    }
+
+
+    div.single_top_chart div#chart_info {
+        padding: 0px 8px;
+    }
+
+    div#chart_info span {
+        font-size: 18px;
+    }
+
+    div#chart_info strong {
+        font-size: 22px;
+    }
+
+    /* _________________ bottom charts ______________ */
+    div#bottom_charts {
+        padding: 70px 0px;
+        margin-bottom: -50px;
+    }
+
+    div#bottom_charts div#line_bar {
+        font-size: 18px;
+        gap: 7px;
+        height: 300px;
+    }
+    div#line_bar h3 {
+        font-size: 18px
+    }
+
+    div#bottom_charts div#doughnut_bar {
+        gap: 7px;
+        height: 300px;
+    }
+
+    div#doughnut_bar h3 {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    
+    div#dashboard_container h2 {
+        font-size: 30px;
+        text-align: center;
+        padding: 0px;
+    }
+
+    div#dashboard_container div#btn_group {
+        margin: 0px auto;
+        padding: 0px;
+    }
+
+    div#dashboard_container div#btn_group button {
+        font-size: 16px;
+        width: 130px;
+        padding: 5px 0px;
+    }
+
+    div#booking_dashboard {
+        padding: 10px;
+        gap: 30px;
+    }
+
+    div#booking_dashboard h3 {
+        font-size: 24px;
+        text-align: center;
+    }
+
+    div#booking_dashboard ul {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    div#booking_dashboard ul h5 {
+        font-size: 18px;
+    }
+
+    div#booking_dashboard ul div#dashboard_btns button {
+        font-size: 14px;
+        padding: 5px 10px;
+    }
+
+    div#order_container {
+        grid-template-columns: auto auto;
+        padding: 0px;
+        justify-content: space-between;
+    }
+
+    div#order_container div.single_order {
+        padding: 8px;
+        word-wrap: break-word;
+    }
+
+    div.single_order p {
+        font-size: 14px;
+    }
+
+    div.single_order div#actions_list button {
+        font-size: 14px;
+        padding: 5px 10px;
+    }
+
+    div.single_order button#delete_order {
+        font-size: 14px;
+    }
+
+    /* __________________ charts ________________ */
+    div#chart_container {
+        margin: 50px auto;
+    }
+
+    div#chart_container div#top_charts {
+        grid-template-columns: auto auto auto auto;
+    }
+
+    div#top_charts div.single_top_chart {
+        width: 20vw;
+        height: 110px;
+        flex-direction: column;
+    }
+
+    div.single_top_chart div#chart_icon {
+        font-size: 26px;
+        width: 100%;
+        height: 35%;
+    }
+
+
+    div.single_top_chart div#chart_info {
+        padding: 10px 6px;
+        width: 100%;
+        height: 65%;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    div#chart_info span {
+        font-size: 16px;
+    }
+
+    div#chart_info strong {
+        font-size: 20px;
+    }
+
+    /* _________________ bottom charts ______________ */
+    div#bottom_charts {
+        padding: 60px 0px;
+        margin-bottom: -40px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    div#bottom_charts div#line_bar {
+        font-size: 16px;
+        gap: 5px;
+        height: 190px;
+    }
+    div#line_bar h3 {
+        font-size: 16px
+    }
+
+    div#bottom_charts div#doughnut_bar {
+        gap: 5px;
+        height: 190px;
+    }
+
+    div#doughnut_bar h3 {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    
+    div#dashboard_container h2 {
+        font-size: 26px;
+        text-align: center;
+        padding: 0px;
+    }
+
+    div#dashboard_container div#btn_group {
+        margin: 0px auto;
+        padding: 0px;
+    }
+
+    div#dashboard_container div#btn_group button {
+        font-size: 14px;
+        width: auto;
+        padding: 5px 15px;
+    }
+
+    div#booking_dashboard {
+        padding: 10px;
+        gap: 20px;
+    }
+
+    div#booking_dashboard h3 {
+        font-size: 22px;
+        text-align: center;
+    }
+
+    div#booking_dashboard ul {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    div#booking_dashboard ul h5 {
+        font-size: 16px;
+    }
+
+    div#order_container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 30px auto;
+    }
+
+    div.single_order {
+        padding: 6px;
+        width: 100%;
+    }
+
+    div.single_order p {
+        font-size: 14px;
+    }
+
+    div.single_order div#actions_list {
+        display: grid;
+        grid-template-columns: auto auto;
+        margin: 10px auto;
+        align-items: center;
+        justify-content: center;
+    }
+
+    div.single_order div#actions_list button {
+        font-size: 14px;
+        padding: 5px 8px;
+    }
+
+    div.single_order button#delete_order {
+        font-size: 14px;
+        margin: 10px auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* __________________ charts ________________ */
+    div#chart_container {
+        margin: 40px auto;
+    }
+
+    div#chart_container div#top_charts {
+        grid-template-columns: auto auto;
+        align-items: center;
+        justify-content: space-evenly;
+        gap: 15px;
+    }
+
+    div#top_charts div.single_top_chart {
+        width: 40vw;
+        height: 100px;
+        flex-direction: column;
+    }
+
+    div.single_top_chart div#chart_icon {
+        font-size: 24px;
+        height: 40%;
+    }
+
+
+    div.single_top_chart div#chart_info {
+        height: 60%;
+    }
+
+    div#chart_info span {
+        font-size: 12px;
+    }
+
+    div#chart_info strong {
+        font-size: 16px;
+    }
+
+    /* _________________ bottom charts ______________ */
+    div#bottom_charts {
+        padding: 60px 0px;
+        margin-bottom: -40px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+    }
+
+    div#bottom_charts div#line_bar {
+        font-size: 16px;
+        gap: 5px;
+        width: 100%;
+        height: auto;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+    }
+
+    div#bottom_charts div#line_bar #linebar {
+        width: 100%;
+    }
+
+    div#line_bar h3 {
+        font-size: 14px
+    }
+
+    div#bottom_charts div#doughnut_bar {
+        gap: 5px;
+        width: 70%;
+        height: auto;
+    }
+
+    div#bottom_charts div#doughnut_bar div#doughnutbar {
+        width: 100%;
+    }
+
+    div#doughnut_bar h3 {
+        font-size: 14px;
+    }
+
+}
+
