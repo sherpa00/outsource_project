@@ -1,6 +1,8 @@
 import {FaQuoteLeft,FaQuoteRight} from "react-icons/fa"
 import {BsPersonCircle,BsArrowLeftCircle,BsArrowRightCircle} from "react-icons/bs";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useAnimation,motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 
 const reviewData = [
@@ -27,6 +29,22 @@ const reviewData = [
 function Testomonials() {
     const [index,setIndex] = useState(0);
 
+    const control = useAnimation();
+    const [ref,inView] = useInView();
+
+    const animationVariants = {
+        hidden: {opacity: 0},
+        visible: {opacity: 1,transition: {duration: 1,delay: 0.2}}
+    }
+
+    useEffect(() => {
+        if (inView) {
+            control.start("visible");
+        } else {
+            control.start("hidden");
+        }
+    },[control,inView]);
+
     const handleGetPrev = () => {
         if (index <= 0) {
             setIndex(reviewData.length-1);
@@ -44,9 +62,15 @@ function Testomonials() {
     }
 
     return (
-        <div id="testomonials_container">
+        <div id="testomonials_container" >
             <h2>Our Testomonials</h2>
-            <div id="testomonials_list">
+            <motion.div 
+                id="testomonials_list"
+                ref={ref}
+                variants={animationVariants}
+                animate={control}
+                initial="hidden"
+            >
                 <SingleReview 
                     text={reviewData[index].text}
                     name={reviewData[index].name}
@@ -54,7 +78,7 @@ function Testomonials() {
                     onGetPrev={handleGetPrev}
                     onGetNext={handleGetNext}
                 />
-            </div>
+            </motion.div>
         </div>
     )
 }

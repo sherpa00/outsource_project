@@ -1,7 +1,26 @@
 import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { useAnimation,motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 function Pricing() {
     let router = useRouter();
+
+    const control = useAnimation();
+    const [ref,inView] = useInView();
+
+    const animationVariants0 = {
+        hidden: {opacity: 0},
+        visible: {opacity: 1,transition: {duration: 1}}
+    }
+
+    useEffect(() => {
+        if (inView) {
+            control.start("visible");
+        } else {
+            control.start("hidden");
+        }
+    },[control,inView]);
 
     const handleClick = (e) => {
         e.preventDefault();
@@ -18,7 +37,13 @@ function Pricing() {
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean rhoncus luctus ante ut aliquam. Mauris consectetur sem diam, ut convallis turpis laoreet a. Suspendisse tempus tortor nibh, interdum fermentum tortor sodales ac.
                 </p>
                 <div id="pricing-list">
-                    <div className="pricing basic">
+                    <motion.div 
+                        className="pricing basic"
+                        ref={ref}
+                        initial="hidden"
+                        animate={control}
+                        variants={animationVariants0}
+                    >
                         <div className="pricing-details">
                             <h3>Basic</h3>
                             <h4>$ 8.88</h4>
@@ -38,9 +63,15 @@ function Pricing() {
                         <button onClick={handleClick}>
                             Book Now
                         </button>
-                    </div>
+                    </motion.div>
 
-                    <div className="pricing standard">
+                    <motion.div 
+                        className="pricing standard"
+                        ref={ref}
+                        initial="hidden"
+                        animate={control}
+                        variants={animationVariants0}
+                    >
                         <div className="pricing-details">
                             <h3>Standard</h3>
                             <h4>$ 15.5</h4>
@@ -60,9 +91,15 @@ function Pricing() {
                         <button onClick={handleClick}>
                             Book Now
                         </button>
-                    </div>
+                    </motion.div>
 
-                    <div className="pricing premium">
+                    <motion.div 
+                        className="pricing premium"
+                        ref={ref}
+                        initial="hidden"
+                        animate={control}
+                        variants={animationVariants0}
+                    >
                         <div className="pricing-details">
                             <h3>Premium</h3>
                             <h4>$ 24.99</h4>
@@ -82,7 +119,7 @@ function Pricing() {
                         <button onClick={handleClick}>
                             Book Now
                         </button>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#a2d9ff" fillOpacity="1" d="M0,64L30,58.7C60,53,120,43,180,74.7C240,107,300,181,360,213.3C420,245,480,235,540,202.7C600,171,660,117,720,122.7C780,128,840,192,900,208C960,224,1020,192,1080,154.7C1140,117,1200,75,1260,85.3C1320,96,1380,160,1410,192L1440,224L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z"></path></svg>

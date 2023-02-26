@@ -254,6 +254,19 @@ function BookingDashboard() {
 
 function SingleOrder({name,id,address,email,phone,package_type,status,ordered_on,complete_on,onUpdateStatus,onDeleteBooking}) {
 
+  const [showBtns,setShowBtns] = useState(false);
+  const bookingRef = useRef();
+
+  const showActionsBtns = () => {
+    if (showBtns) {
+      setShowBtns(false);
+      bookingRef.current.style.height = "290px";
+    } else {
+      setShowBtns(true);
+      bookingRef.current.style.height = "auto";
+    }
+  }
+
     const updateToStatus = (e) => {
         let newStatus = e.target.value;
         onUpdateStatus(newStatus,id);
@@ -264,7 +277,7 @@ function SingleOrder({name,id,address,email,phone,package_type,status,ordered_on
     }
 
     return (
-        <div className={"single_order" + " " + status}>
+        <div className={"single_order" + " " + status} ref={bookingRef} onClick={showActionsBtns}>
             <p>
                 <strong>Name : </strong>
                 <span>{name}</span>
@@ -293,23 +306,28 @@ function SingleOrder({name,id,address,email,phone,package_type,status,ordered_on
                 <strong>Date : </strong>
                 <span>{ordered_on} - {complete_on}</span>
             </p>
-            <div id="actions_list">
-                <button id="accept" value="accepted" onClick={updateToStatus}>
-                    Accept
+            {
+              !showBtns ? null :
+                <>
+                  <div id="actions_list">
+                    <button id="accept" value="accepted" onClick={updateToStatus}>
+                        Accept
+                    </button>
+                    <button id="reject" value="rejected" onClick={updateToStatus}>
+                        Reject
+                    </button>
+                    <button id="ongoing" value="ongoing" onClick={updateToStatus}>
+                        Ongoing
+                    </button>
+                    <button id="completed" value="completed" onClick={updateToStatus}>
+                        Completed
+                    </button>
+                </div>
+                <button id="delete_order" onClick={deleteSingleBooking}>
+                    Delete Order
                 </button>
-                <button id="reject" value="rejected" onClick={updateToStatus}>
-                    Reject
-                </button>
-                <button id="ongoing" value="ongoing" onClick={updateToStatus}>
-                    Ongoing
-                </button>
-                <button id="completed" value="completed" onClick={updateToStatus}>
-                    Completed
-                </button>
-            </div>
-            <button id="delete_order" onClick={deleteSingleBooking}>
-                Delete Order
-            </button>
+              </>
+            }
         </div>
     )
 }
