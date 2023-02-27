@@ -11,27 +11,27 @@ function Services() {
 
     const animationVariants0 = {
         hidden: {opacity: 0,scale: 0.7},
-        visible: {opacity: 1,scale: 1,transition: {duration: 0.6,delay: 0}}
+        visible: {opacity: 1,scale: 1,transition: {duration: 0.5,delay: 0}}
     }
     const animationVariants1 = {
         hidden: {opacity: 0,scale: 0.7},
-        visible: {opacity: 1,scale: 1,transition: {duration: 0.6,delay: 0.1}}
+        visible: {opacity: 1,scale: 1,transition: {duration: 0.5,delay: 0.1}}
     }
     const animationVariants2 = {
         hidden: {opacity: 0,scale: 0.7},
-        visible: {opacity: 1,scale: 1,transition: {duration: 0.6,delay: 0.2}}
+        visible: {opacity: 1,scale: 1,transition: {duration: 0.5,delay: 0.2}}
     }
     const animationVariants3 = {
         hidden: {opacity: 0,scale: 0.7},
-        visible: {opacity: 1,scale: 1,transition: {duration: 0.6,delay: 0.3}}
+        visible: {opacity: 1,scale: 1,transition: {duration: 0.5,delay: 0.3}}
     }
     const animationVariants4 = {
         hidden: {opacity: 0,scale: 0.7},
-        visible: {opacity: 1,scale: 1,transition: {duration: 0.6,delay: 0.4}}
+        visible: {opacity: 1,scale: 1,transition: {duration: 0.5,delay: 0.4}}
     }
     const animationVariants5 = {
         hidden: {opacity: 0,scale: 0.7},
-        visible: {opacity: 1,scale: 1,transition: {duration: 0.6,delay: 0.5}}
+        visible: {opacity: 1,scale: 1,transition: {duration: 0.5,delay: 0.5}}
     }
 
     useEffect(() => {

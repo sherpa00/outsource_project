@@ -1,3 +1,4 @@
+import ContactUs from "@/components/contact";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
@@ -42,27 +43,30 @@ const servicesData = [
 
 function Services() {
     return (
-        <div id="services">
-            <h2>Our <span>Services</span></h2>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce pharetra a metus ut placerat. Phasellus hendrerit vitae urna vitae pharetra. Curabitur sit amet pharetra eros, et vestibulum erat. Vestibulum non pharetra orci, eget gravida tellus. Nam sed ligula odio. In hac habitasse platea dictumst. Pellentesque faucibus pulvinar justo. Sed orci massa, malesuada ac felis ut, finibus sodales erat. Ut nec leo faucibus, faucibus leo vel, porttitor orci.
-            </p>
-            <div id="services-details-list">
-                {
-                    servicesData.map((service,index) => {
-                        return <ServiceDetails
-                                    key={service.id}
-                                    title={service.title}
-                                    desc={service.desc}
-                                    position={service.position}
-                                    linkSrc={service.linkSrc}
-                                    imgSrc={service.imgSrc}
-                                    alt={service.alt}
-                                />
-                    } )
-                }
+        <>
+            <div id="services">
+                <h2>Our <span>Services</span></h2>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce pharetra a metus ut placerat. Phasellus hendrerit vitae urna vitae pharetra. Curabitur sit amet pharetra eros, et vestibulum erat. Vestibulum non pharetra orci, eget gravida tellus. Nam sed ligula odio. In hac habitasse platea dictumst. Pellentesque faucibus pulvinar justo. Sed orci massa, malesuada ac felis ut, finibus sodales erat. Ut nec leo faucibus, faucibus leo vel, porttitor orci.
+                </p>
+                <div id="services-details-list">
+                    {
+                        servicesData.map((service,index) => {
+                            return <ServiceDetails
+                                        key={service.id}
+                                        title={service.title}
+                                        desc={service.desc}
+                                        position={service.position}
+                                        linkSrc={service.linkSrc}
+                                        imgSrc={service.imgSrc}
+                                        alt={service.alt}
+                                    />
+                        } )
+                    }
+                </div>
             </div>
-        </div>
+            <ContactUs />
+        </>
     )
 }
 

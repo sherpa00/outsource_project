@@ -189,25 +189,26 @@
     .header_text_paragraph {
         font-size: 14px;
         width: 90%;
+        text-overflow: ellipsis;
     }
 
     .included_header {
         font-size: 20px;
+        margin: 10px 0px;
+        margin-top: 30px;
     }
 
     .included_header_text {
         font-size: 14px;
-        width: 90%;
     }
 
     .included_list_icon {
-        font-size: 40px;
+        font-size: 50px;
     }
 
     .included_list {
         grid-template-columns: auto;
         padding: 10px;
-        
     }
 
     .included_list_header {

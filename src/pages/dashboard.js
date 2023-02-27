@@ -20,7 +20,6 @@ function Dashboard() {
       await logOut();
       router.push("/login");
     } catch (err) {
-      console.log(err.message);
       toast.error("Some Error Occured ! Try Again", {
         hideProgressBar: true,
         autoClose: 1500,

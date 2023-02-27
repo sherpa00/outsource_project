@@ -1975,13 +1975,19 @@ div#full_page_loader {
   }
 
   div#faq-container div#faq-list details summary {
-    font-size: 16px;
-    padding: 7px 10px;
+    font-size: 14px;
+    padding: 5px 7px;
+    font-weight: 600;
+  }
+
+  div#faq-container div#faq-list details summary strong {
+    font-size: 14px;
   }
 
   div#faq-container div#faq-list details p {
-    font-size: 14px;
-    padding: 10px;
+    font-size: 12px;
+    padding: 10px 8px;
+    font-weight: 400;
   }
 
   /* ________________ contact us ___________________ */
