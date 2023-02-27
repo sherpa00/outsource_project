@@ -24,7 +24,7 @@ function Hero() {
     const [ref,inView] = useInView();
 
     const animationVariants = {
-        visible: { opacity: 1, y: 0, transition: { duration: 1} },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.8} },
         hidden: { opacity: 0,y: 100 }
       };
 

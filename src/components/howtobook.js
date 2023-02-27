@@ -9,20 +9,8 @@ function HowToBook() {
     const [ref,inView] = useInView();
 
     const animationVariants0 = {
-        hidden: {opacity: 0,rotateY: 90},
-        visible: {opacity: 1,rotateY: 0,transition: {duration: 0.6,delay: 0}}
-    }
-    const animationVariants1 = {
-        hidden: {opacity: 0,rotateY: 90},
-        visible: {opacity: 1,rotateY: 0,transition: {duration: 0.6,delay: 0.3}}
-    }
-    const animationVariants2 = {
-        hidden: {opacity: 0,rotateY: 90},
-        visible: {opacity: 1,rotateY: 0,transition: {duration: 0.6,delay: 0.6}}
-    }
-    const animationVariants3 = {
-        hidden: {opacity: 0,rotateY: 90},
-        visible: {opacity: 1,rotateY: 0,transition: {duration: 0.6,delay: 0.9}}
+        hidden: {opacity: 0},
+        visible: {opacity: 1,transition: {duration: 0.8}}
     }
 
     useEffect(() => {
@@ -34,7 +22,13 @@ function HowToBook() {
     },[control,inView]);
 
     return (
-        <div id="howtobook">
+        <motion.div 
+            id="howtobook"
+            ref={ref}
+            animate={control}
+            variants={animationVariants0}
+            initial="hidden"
+        >
             <h2>
                 How to order our services?
             </h2>
@@ -43,12 +37,7 @@ function HowToBook() {
             </p>
             
             <ul>
-                <motion.li
-                    ref={ref}
-                    initial="hidden"
-                    animate={control}
-                    variants={animationVariants0}
-                >
+                <li>
                     <span>
                         1
                     </span>
@@ -59,13 +48,8 @@ function HowToBook() {
                     <small>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     </small>
-                </motion.li>
-                <motion.li
-                    ref={ref}
-                    initial="hidden"
-                    animate={control}
-                    variants={animationVariants1}
-                >
+                </li>
+                <li>
                     <span>
                         2
                     </span>
@@ -76,13 +60,8 @@ function HowToBook() {
                     <small>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     </small>
-                </motion.li>
-                <motion.li
-                    ref={ref}
-                    initial="hidden"
-                    animate={control}
-                    variants={animationVariants2}
-                >
+                </li>
+                <li>
                     <span>
                         3
                     </span>
@@ -93,13 +72,8 @@ function HowToBook() {
                     <small>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     </small>
-                </motion.li>
-                <motion.li
-                    ref={ref}
-                    initial="hidden"
-                    animate={control}
-                    variants={animationVariants3}
-                >
+                </li>
+                <li>
                     <span>
                         4
                     </span>
@@ -110,9 +84,9 @@ function HowToBook() {
                     <small>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     </small>
-                </motion.li>
+                </li>
             </ul>
-        </div>
+        </motion.div>
     )
 }
 

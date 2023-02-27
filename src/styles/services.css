@@ -178,10 +178,11 @@ div#services-details-list div.service-details div button:hover {
 
 @media screen and (max-width: 500px) {
     div#services h2 {
-        font-size: 24px;
+        font-size: 26px;
     }
     div#services p {
         font-size: 14px;
+        width: 85%;
     }
     div#services div#services-details-list div.service-details img {
         width: 65%;
@@ -194,7 +195,7 @@ div#services-details-list div.service-details div button:hover {
     }
 
     div#services div#services-details-list div.service-details div p {
-        font-size: 12px;
+        font-size: 14px;
     }
 
     div#services-details-list div.service-details div button {
