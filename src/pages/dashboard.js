@@ -1,9 +1,9 @@
 import ProtectedRoute from "@/components/PotectedRoute";
 import { useAuth } from "context/AuthContext";
 import { db } from "firebase.configs";
-import { collection, deleteDoc, doc, getDoc, getDocs, setDoc } from "firebase/firestore";
+import { collection,deleteDoc, doc, getDocs, setDoc } from "firebase/firestore";
 import { useRouter } from "next/router";
-import { createRef, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
 import {FaRegSadCry} from "react-icons/fa";
 import {BiDollarCircle,BiGroup,BiShoppingBag} from "react-icons/bi";
@@ -45,127 +45,148 @@ function Dashboard() {
 function BookingDashboard() {
   const [bookingData, setBookingData] = useState([]);
   const [filteredBookingData,setFilteredBookingData] = useState([]);
+  const [updateStatus,setUpdateStatus] = useState("");
+  const [updateId,setUpdateId] = useState("");
+  const [confirmAction,setConfirmAction] = useState("");
+  const [deleteId,setDeleteId] = useState("");
+
+  const confirmRef = useRef();
 
   useEffect(() => {
-    // fetch the bookings
-    const getBookingData = async () => {
-        try {
-            let results = [];
-            let querySnapShot = await getDocs(collection(db,"bookings"));
-            querySnapShot.forEach((doc) => {
-                results.push(
-                    {
-                        ...doc.data(),
-                        id: doc.id
-                    }
-                );
-            });
-            setBookingData(results);
-            setFilteredBookingData(results);
-        } catch (err) {
-            toast.error(err.message,{hideProgressBar: true,autoClose: 15000})
-        }
-    }
     getBookingData();
   },[]);
 
+  // fetch the bookings
+  const getBookingData = async () => {
+    try {
+        let results = [];
+        let querySnapShot = await getDocs(collection(db,"bookings"));
+        querySnapShot.forEach((doc) => {
+            results.push(
+                {
+                    ...doc.data(),
+                    id: doc.id
+                }
+            );
+        });
+        setBookingData(results);
+        setFilteredBookingData(results);
+    } catch (err) {
+        toast.error(err.message,{hideProgressBar: true,autoClose: 15000})
+    }
+}
+
   useEffect(() => {
     setFilteredBookingData(bookingData);
-  },[bookingData])
+  },[bookingData]);
 
   // update booking status to "accepted"
-  const updateStatus = async (status,id) => {
-    // first find the booking data having the id
-    let resultDataIndex = bookingData.findIndex(data => data.id === id);
+  const updateToStatus = async (status,id) => {
 
-    if (resultDataIndex <= -1) {
-        return;
-    }
+    showConfirmBox();
+    
     switch (status) {
         case "accepted":
             // set doc.status to accepted
-            try {
-                await setDoc(doc(db,"bookings",id),{
-                    status: status
-                },{merge: true});
-                let tempData = bookingData[resultDataIndex];
-                tempData.status = status;
-                let tempBookingData = bookingData;
-                tempBookingData.splice(resultDataIndex,1,tempData);
-                setBookingData([...tempBookingData]);
-                toast.success("Succesfully updated to status: Accepted",{hideProgressBar: true,autoClose: 1500}); 
-            } catch (err) {
-                toast.error(err.message,{hideProgressBar: true,autoClose: 15000})
-            }
+            setUpdateStatus(status);
+            setUpdateId(id);
+            setConfirmAction("updateStatus");
+            console.log("accepted");
             break;
         case "rejected":
-            // set doc.status to accepted
-            try {
-                await setDoc(doc(db,"bookings",id),{
-                    status: status
-                },{merge: true});
-                let tempData = bookingData[resultDataIndex];
-                tempData.status = status;
-                let tempBookingData = bookingData;
-                tempBookingData.splice(resultDataIndex,1,tempData);
-                setBookingData([...tempBookingData]);
-                toast.success("Succesfully updated to status: Rejected",{hideProgressBar: true,autoClose: 1500});
-                
-            } catch (err) {
-                toast.error(err.message,{hideProgressBar: true,autoClose: 15000})
-            }
+            // set doc.status to rejected
+            setUpdateStatus(status);
+            setUpdateId(id);
+            setConfirmAction("updateStatus");
+            console.log("rejected");
             break;
         case "ongoing":
-            // set doc.status to accepted
-            try {
-                await setDoc(doc(db,"bookings",id),{
-                    status: status
-                },{merge: true});
-                let tempData = bookingData[resultDataIndex];
-                tempData.status = status;
-                let tempBookingData = bookingData;
-                tempBookingData.splice(resultDataIndex,1,tempData);
-                setBookingData([...tempBookingData]);
-                toast.success("Succesfully updated to status: Ongoing",{hideProgressBar: true,autoClose: 1500});
-                
-            } catch (err) {
-                toast.error(err.message,{hideProgressBar: true,autoClose: 15000})
-            }
+            // set doc.status to ongoing
+            setUpdateStatus(status);
+            setUpdateId(id);
+            setConfirmAction("updateStatus");
+            console.log("ongoing")
             break;
         case "completed":
-            // set doc.status to accepted
-            try {
-                await setDoc(doc(db,"bookings",id),{
-                    status: status
-                },{merge: true});
-                let tempData = bookingData[resultDataIndex];
-                tempData.status = status;
-                let tempBookingData = bookingData;
-                tempBookingData.splice(resultDataIndex,1,tempData);
-                setBookingData([...tempBookingData]);
-                toast.success("Succesfully updated to status: Completed",{hideProgressBar: true,autoClose: 1500});
-                
-            } catch (err) {
-                toast.error(err.message,{hideProgressBar: true,autoClose: 15000})
-            }
+            // set doc.status to completed
+            setUpdateStatus(status);
+            setUpdateId(id);
+            setConfirmAction("updateStatus");
+            console.log("completed");
             break
         default:
-            toast.error("Cannot update status right now.",{hideProgressBar: true,autoClose: 15000});
+            toast.error(`Succesfully updated to status: ${status}`,{hideProgressBar: true,autoClose: 15000});
             break;
     }
   }
 
   // delete booking orders
   const deleteBooking = async (id) => {
-    try {
-        // here delete the doc booking order by id
-        await deleteDoc(doc(db,"bookings",id));
-        let newBookingData = bookingData.filter(data => data.id !== id);
-        setBookingData(newBookingData);
-        toast.success("Succefully Deleted the Booking Order",{hideProgressBar: true,autoClose: 1500});
-    } catch (err) {
-        toast.error(err.message,{hideProgressBar: true,autoClose: 15000})
+    showConfirmBox();
+    setConfirmAction("deleteOrder");
+    setDeleteId(id);
+  }
+
+  // show confirm box 
+  const showConfirmBox = () => {
+    confirmRef.current.style.left = "0"
+  }
+
+  // hide confirm box
+  const hideConfrimBox = () => {
+    confirmRef.current.style.left = "-100%";
+  }
+
+  const confirmYes = async () => {
+
+    if (confirmAction === "deleteOrder") {
+        try {
+          // here delete the doc booking order by id
+          await deleteDoc(doc(db,"bookings",deleteId));
+          let newBookingData = bookingData.filter(data => data.id !== deleteId);
+          setBookingData(newBookingData);
+          toast.success("Succefully Deleted the Booking Order",{hideProgressBar: true,autoClose: 1500});
+          hideConfrimBox();
+          setDeleteId("");
+      } catch (err) {
+          toast.error(err.message,{hideProgressBar: true,autoClose: 15000})
+      }
     }
+
+    if (confirmAction === "updateStatus") {
+      let resultDataIndex = bookingData.findIndex(data => data.id === updateId);
+
+      if (resultDataIndex <= -1) {
+        return;
+      }
+
+      try {
+          await setDoc(doc(db,"bookings",updateId),{
+              status: updateStatus
+          },{merge: true});
+          let tempData = bookingData[resultDataIndex];
+          tempData.status = updateStatus;
+          let tempBookingData = bookingData;
+          tempBookingData.splice(resultDataIndex,1,tempData);
+          setBookingData([...tempBookingData]);
+          toast.success(`Succesfully updated to status: ${updateStatus}`,{hideProgressBar: true,autoClose: 1500});
+          hideConfrimBox();
+          setUpdateStatus("");
+          setUpdateId("");
+      } catch (err) {
+          toast.error(err.message,{hideProgressBar: true,autoClose: 15000})
+      }
+    }
+  }
+
+  const filterBookingData = (e) => {
+    let status = e.target.id;
+    // if status is "all" then set to default
+    if (status === "default") {
+      setFilteredBookingData(bookingData);
+      return;
+    }
+    setFilteredBookingData(bookingData.filter(data => data.status === status));
   }
 
   //confirm box modifications
@@ -176,43 +197,30 @@ function BookingDashboard() {
       <ul>
         <h5>Customers </h5>
         <div id="dashboard_btns">
+          <button id="default" onClick={filterBookingData}>
+            Default
+          </button>
           <button
             id="accepted"
-            onClick={() =>
-              setFilteredBookingData(
-                bookingData.filter((data) => data.status === "accepted")
-              )
-            }
+            onClick={filterBookingData}
           >
             Accepted
           </button>
           <button
             id="rejected"
-            onClick={() =>
-              setFilteredBookingData(
-                bookingData.filter((data) => data.status === "rejected")
-              )
-            }
+            onClick={filterBookingData}
           >
             Rejected
           </button>
           <button
             id="ongoing"
-            onClick={() =>
-              setFilteredBookingData(
-                bookingData.filter((data) => data.status === "ongoing")
-              )
-            }
+            onClick={filterBookingData}
           >
             OnGoing
           </button>
           <button
             id="completed"
-            onClick={() =>
-              setFilteredBookingData(
-                bookingData.filter((data) => data.status === "completed")
-              )
-            }
+            onClick={filterBookingData}
           >
             Completed
           </button>
@@ -241,11 +249,39 @@ function BookingDashboard() {
                             status={data.status}
                             ordered_on={data.ordered_on}
                             complete_on={data.complete_on}
-                            onUpdateStatus={updateStatus}
+                            onUpdateStatus={updateToStatus}
                             onDeleteBooking={deleteBooking}
                         />
             })
         }
+      </div>
+      <div id="confirmBox_container" ref={confirmRef}>
+        <div id="confirmBox">
+          <h4>
+            Are you sure about doing this action?
+          </h4>
+          <p>
+            You must very carefully consider this action otherwise it can affect greatly to your customers and yourself.
+          </p>
+          {
+            updateStatus !== "completed" ? null : 
+            <label>
+              How much earned here?<br></br>
+              <input type="text" id="inp" placeholder="total money earned" required/>
+            </label>
+          }
+          <div id="confirm_btns">
+            <button id="confirm_yes" onClick={confirmYes}>
+              Yes, change
+            </button>
+            <button id="confirm_no" onClick={hideConfrimBox}>
+              No, cancel
+            </button>
+          </div>
+          <small>
+            NOTE: This action also encourges to send email notification to customer and yourself
+          </small>
+        </div>
       </div>
     </div>
   );
