@@ -1,7 +1,7 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
 import emailjs from "@emailjs/browser";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, doc, getDoc, setDoc } from "firebase/firestore";
 import { db } from "firebase.configs";
 
 function Booking() {
@@ -58,7 +58,7 @@ function BookingForm() {
         ).then( async (response) => {
             try {
                 // add the booking 
-                const docRef = await addDoc(collection(db,"bookings"), {
+                await addDoc(collection(db,"bookings"), {
                     name: fullname,
                     email: email,
                     phone: phone,
@@ -72,11 +72,91 @@ function BookingForm() {
 
                 toast.success('Successfully Booked. Thank You.', { hideProgressBar: true, autoClose: 1500});
 
+                // also update the orders count in analytics
+                let analyticsData = await getDoc(doc(db,"analytics","xfSJOCX6A7u1H9IoggsO"));
+                await setDoc(doc(db,"analytics","xfSJOCX6A7u1H9IoggsO"),{
+                    total_orders: analyticsData.data().total_orders + 1
+                },{merge: true});
+
+                //here increment the bar charts package consumptions analytics 
+                let analyticsBarData = await getDoc(doc(db,"analytics","yokEQtBtiBWUVgZM0Eu6"));
+
+                if (packageRef.current.value === "Basic") {
+                    await setDoc(doc(db,"analytics","yokEQtBtiBWUVgZM0Eu6"),{
+                        basic: +analyticsBarData.data().basic + 1
+                    },{merge: true});
+                } else if (packageRef.current.value === "Standard") {
+                    await setDoc(doc(db,"analytics","yokEQtBtiBWUVgZM0Eu6"),{
+                        standard: +analyticsBarData.data().standard + 1
+                    },{merge: true});
+                } else {
+                    await setDoc(doc(db,"analytics","yokEQtBtiBWUVgZM0Eu6"),{
+                        premium: +analyticsBarData.data().premium + 1
+                    },{merge: true});
+                }
+
+                // here increment the line charts order analytics
+                let month = new Date().getMonth();
+                let analyticsLineData = await getDoc(doc(db,"analytics","Gp46D0NPNVqiFuJi7umq"));
+
+                if (month === 1) {
+                    await setDoc(doc(db,"analytics","Gp46D0NPNVqiFuJi7umq"),{
+                        jan: +analyticsLineData.data().jan + 1
+                    },{merge: true});
+                } else if (month === 2) {
+                    await setDoc(doc(db,"analytics","Gp46D0NPNVqiFuJi7umq"),{
+                        feb: +analyticsLineData.data().feb + 1
+                    },{merge: true});
+                } else if (month === 3) {
+                    await setDoc(doc(db,"analytics","Gp46D0NPNVqiFuJi7umq"),{
+                        mar: +analyticsLineData.data().mar + 1
+                    },{merge: true});
+                } else if (month === 4) {
+                    await setDoc(doc(db,"analytics","Gp46D0NPNVqiFuJi7umq"),{
+                        apr: +analyticsLineData.data().apr + 1
+                    },{merge: true});
+                } else if (month === 5) {
+                    await setDoc(doc(db,"analytics","Gp46D0NPNVqiFuJi7umq"),{
+                        may: +analyticsLineData.data().may + 1
+                    },{merge: true});
+                } else if (month === 6) {
+                    await setDoc(doc(db,"analytics","Gp46D0NPNVqiFuJi7umq"),{
+                        jun: +analyticsLineData.data().jun + 1
+                    },{merge: true});
+                } else if (month === 7) {
+                    await setDoc(doc(db,"analytics","Gp46D0NPNVqiFuJi7umq"),{
+                        jul: +analyticsLineData.data().jul + 1
+                    },{merge: true});
+                } else if (month === 8) {
+                    await setDoc(doc(db,"analytics","Gp46D0NPNVqiFuJi7umq"),{
+                        aug: +analyticsLineData.data().aug + 1
+                    },{merge: true});
+                } else if (month === 9) {
+                    await setDoc(doc(db,"analytics","Gp46D0NPNVqiFuJi7umq"),{
+                        sep: +analyticsLineData.data().sep + 1
+                    },{merge: true});
+                } else if (month === 10) {
+                    await setDoc(doc(db,"analytics","Gp46D0NPNVqiFuJi7umq"),{
+                        oct: +analyticsLineData.data().oct + 1
+                    },{merge: true});
+                } else if (month === 11) {
+                    await setDoc(doc(db,"analytics","Gp46D0NPNVqiFuJi7umq"),{
+                        nov: +analyticsLineData.data().nov + 1
+                    },{merge: true});
+                } else if (month === 12) {
+                    await setDoc(doc(db,"analytics","Gp46D0NPNVqiFuJi7umq"),{
+                        dec: +analyticsLineData.data().dec + 1
+                    },{merge: true});
+                } else {
+                    toast.error("Oops! Something gone wrong! Try Again.",{hideProgressBar: true,autoClose: 1500});
+                }
+
+                setLoading(false);
             } catch (error) {
-                console.log(error.message);
+                toast.error("Oops! Something gone wrong! Try Again.",{hideProgressBar: true,autoClose: 1500});
             }
         }).catch((err) => {
-            toast.error('Some Error occurd. Try Again', { hideProgressBar: true, autoClose: 1500});
+            toast.error('Oops! Something gone wrong! Try Again', { hideProgressBar: true, autoClose: 1500});
         });
         setFullname("");
         setEmail("")
@@ -84,9 +164,6 @@ function BookingForm() {
         setDate("");
         setInfo("");
         setPhone("");
-        packageRef.current.value = "";
-
-        setLoading(false);
     }
 
     return (

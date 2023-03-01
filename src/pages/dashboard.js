@@ -1,7 +1,7 @@
 import ProtectedRoute from "@/components/PotectedRoute";
 import { useAuth } from "context/AuthContext";
 import { db } from "firebase.configs";
-import { collection,deleteDoc, doc, getDocs, setDoc } from "firebase/firestore";
+import { collection,deleteDoc, doc, getDoc, getDocs, setDoc } from "firebase/firestore";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
@@ -49,6 +49,7 @@ function BookingDashboard() {
   const [updateId,setUpdateId] = useState("");
   const [confirmAction,setConfirmAction] = useState("");
   const [deleteId,setDeleteId] = useState("");
+  const [completedAmount,setCompletedAmount] = useState(0);
 
   const confirmRef = useRef();
 
@@ -91,28 +92,24 @@ function BookingDashboard() {
             setUpdateStatus(status);
             setUpdateId(id);
             setConfirmAction("updateStatus");
-            console.log("accepted");
             break;
         case "rejected":
             // set doc.status to rejected
             setUpdateStatus(status);
             setUpdateId(id);
             setConfirmAction("updateStatus");
-            console.log("rejected");
             break;
         case "ongoing":
             // set doc.status to ongoing
             setUpdateStatus(status);
             setUpdateId(id);
             setConfirmAction("updateStatus");
-            console.log("ongoing")
             break;
         case "completed":
             // set doc.status to completed
             setUpdateStatus(status);
             setUpdateId(id);
             setConfirmAction("updateStatus");
-            console.log("completed");
             break
         default:
             toast.error(`Succesfully updated to status: ${status}`,{hideProgressBar: true,autoClose: 15000});
@@ -161,6 +158,7 @@ function BookingDashboard() {
       }
 
       try {
+        // here set the status 
           await setDoc(doc(db,"bookings",updateId),{
               status: updateStatus
           },{merge: true});
@@ -170,6 +168,14 @@ function BookingDashboard() {
           tempBookingData.splice(resultDataIndex,1,tempData);
           setBookingData([...tempBookingData]);
           toast.success(`Succesfully updated to status: ${updateStatus}`,{hideProgressBar: true,autoClose: 1500});
+          
+          // if update status is "completed" then add the amount earned to analytics and also increment client numbers
+          let analyticsData = await getDoc(doc(db,"analytics","xfSJOCX6A7u1H9IoggsO"));
+          await setDoc(doc(db,"analytics","xfSJOCX6A7u1H9IoggsO"),{
+            total_sales: +analyticsData.data().total_sales + +completedAmount,
+            total_clients: +analyticsData.data().total_clients + 1
+          },{merge: true});
+
           hideConfrimBox();
           setUpdateStatus("");
           setUpdateId("");
@@ -190,6 +196,13 @@ function BookingDashboard() {
   }
 
   //confirm box modifications
+  let confirmTitle = "";
+  if (confirmAction === "updateStatus") {
+    confirmTitle = `Are you sure about updating status to ${updateStatus} ?`;
+  };
+  if (confirmAction === "deleteOrder") {
+    confirmTitle = "Are you sure about deleting this order ?";
+  }
 
   return (
     <div id="booking_dashboard">
@@ -258,7 +271,9 @@ function BookingDashboard() {
       <div id="confirmBox_container" ref={confirmRef}>
         <div id="confirmBox">
           <h4>
-            Are you sure about doing this action?
+            {
+              confirmTitle
+            }
           </h4>
           <p>
             You must very carefully consider this action otherwise it can affect greatly to your customers and yourself.
@@ -267,12 +282,12 @@ function BookingDashboard() {
             updateStatus !== "completed" ? null : 
             <label>
               How much earned here?<br></br>
-              <input type="text" id="inp" placeholder="total money earned" required/>
+              <input type="number" id="inp" value={completedAmount} onChange={(e) => setCompletedAmount(e.target.value)} placeholder="total money earned" required/>
             </label>
           }
           <div id="confirm_btns">
             <button id="confirm_yes" onClick={confirmYes}>
-              Yes, change
+              Yes, I&rsquo;m sure
             </button>
             <button id="confirm_no" onClick={hideConfrimBox}>
               No, cancel
@@ -370,28 +385,101 @@ function SingleOrder({name,id,address,email,phone,package_type,status,ordered_on
 
 function Charts() {
 
+  const [chartsData,setChartsData] = useState({
+    total_sales: 0,
+    total_orders: 0,
+    total_clients: 0,
+    total_services: 0,
+  });
+  const [chartsLineData,setChartsLineData] = useState([]);
+  const[chartsBarData,setChartsBarData] = useState([]);
+
+  useEffect(() => {
+    fetchAnalyticsData();
+    fetchLineAnalyticsData();
+    fetchBarAnalyticsData();
+  },[]);
+
+  const fetchAnalyticsData = async () => {
+    try {
+      let jsonData = await getDoc(doc(db,"analytics","xfSJOCX6A7u1H9IoggsO"));
+      if (jsonData.exists()) {
+        setChartsData(jsonData.data());
+      } else {
+        toast.error("Soory! Some Error occured",{hideProgressBar: true,autoClose: 1500})
+      }
+    } catch (err) {
+      toast.error(err.message,{hideProgressBar: true,autoClose: 1500});
+    }
+  }
+
+  const fetchLineAnalyticsData = async () => {
+    try {
+      let jsonData = await getDoc(doc(db,"analytics","Gp46D0NPNVqiFuJi7umq"));
+      if (jsonData.exists()) {
+        let newData = [
+          +jsonData.data().jan,
+          +jsonData.data().feb,
+          +jsonData.data().mar,
+          +jsonData.data().apr,
+          +jsonData.data().may,
+          +jsonData.data().jun,
+          +jsonData.data().jul,
+          +jsonData.data().aug,
+          +jsonData.data().sep,
+          +jsonData.data().oct,
+          +jsonData.data().nov,
+          +jsonData.data().dec,
+        ];
+        setChartsLineData(newData);
+      } else {
+        toast.error("Soory! Some Error occured",{hideProgressBar: true,autoClose: 1500})
+      }
+    } catch (err) {
+      toast.error(err.message,{hideProgressBar: true,autoClose: 1500});
+    }
+  }
+
+  const fetchBarAnalyticsData = async () => {
+    try {
+      let jsonData = await getDoc(doc(db,"analytics","yokEQtBtiBWUVgZM0Eu6"));
+      if (jsonData.exists()) {
+        let newData = [
+          +jsonData.data().basic,
+          +jsonData.data().standard,
+          +jsonData.data().premium
+        ]
+        setChartsBarData(newData);
+      } else {
+        toast.error("Soory! Some Error occured",{hideProgressBar: true,autoClose: 1500})
+      }
+    } catch (err) {
+      toast.error(err.message,{hideProgressBar: true,autoClose: 1500});
+    }
+  }
+
   const TopChartData = [
     {
       title: "TOTAL SALES",
-      value: "$14000",
+      value: "$"+chartsData.total_sales,
       color: "lightcoral",
       icon: <BiDollarCircle color="#eee"/>
     },
     {
       title: "TOTAL ORDERS",
-      value: "5000",
+      value: chartsData.total_orders,
       color: "steelblue",
       icon: <BiShoppingBag />
     },
     {
       title: "TOTAL CLIENTS",
-      value: "1200",
+      value: chartsData.total_clients,
       color: "purple",
       icon: <BiGroup />
     },
     {
       title: "TOTAL SERVICES",
-      value: "10",
+      value: chartsData.total_services,
       color: "limegreen",
       icon: <MdOutlineMiscellaneousServices />
     },
@@ -412,9 +500,14 @@ function Charts() {
           })
         }
       </div>
+
       <div id="bottom_charts">
-        <LineBar />
-        <DoughnutBar />
+        <LineBar 
+          chartData={chartsLineData}  
+        />
+        <DoughnutBar 
+          chartData={chartsBarData}
+        />
       </div>
     </div>
   )
@@ -448,7 +541,7 @@ function SingleTopChart({title,value,color,icon}) {
   )
 }
 
-function LineBar() {
+function LineBar({chartData}) {
 
   const randomArr = [];
   for (let i = 0; i <= 12; i++) {
@@ -460,26 +553,30 @@ function LineBar() {
     labels: ['Jan','Feb','Mar',"Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
     datasets: [
       {
-        label: "First Dataset",
-        data: randomArr,
+        label: "This Year",
+        data: [...chartData],
         fill: true,
         backgroundColor: "skyblue",
-        tension: 0.2
+        tension: 0.3
       }
     ]
+  }
+
+  if (chartData.length <= 0) {
+    return "loading...";
   }
 
   return (
     <div id="line_bar">
       <h3>
-        Sales Analytics
+        Orders Analytics
       </h3>
       <Line data={data} id="linebar"/>
     </div>
   )
 }
 
-function DoughnutBar() {
+function DoughnutBar({chartData}) {
 
   const data = {
     labels: [
@@ -490,7 +587,7 @@ function DoughnutBar() {
     datasets: [
       {
         label: 'All Around',
-        data: [300, 50, 100],
+        data: [...chartData],
         backgroundColor: [
           'rgb(255, 99, 132)',
           'rgb(54, 162, 235)',
@@ -500,6 +597,10 @@ function DoughnutBar() {
     }
   ]
   };
+
+  if (chartData.length <= 0) {
+    return "loading...";
+  }
 
   return (
     <div id="doughnut_bar">
