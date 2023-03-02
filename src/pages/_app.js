@@ -1,3 +1,4 @@
+import { Bebas_Neue,Montserrat } from '@next/font/google';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import Transition from '@/components/transition';
@@ -16,10 +17,25 @@ import '@/styles/privacy-policy.css';
 import '@/styles/login.css';
 import '@/styles/dashboard.css';
 
+export const montserrat = Montserrat({
+  weight: '200',
+  subsets: ['latin']
+});
+export const bebas_neue = Bebas_Neue({
+  weight: '400',
+  subsets: ['latin']
+});
+
 export default function App({ Component, pageProps }) {
 
   return (
   <>
+  <style jsx global>{`
+        :root {
+          --primary-font: ${bebas_neue.style.fontFamily};
+          --secondary-font: ${montserrat.style.fontFamily};
+        }
+      `}</style>
     <Transition>
       <AuthContextProvider>
         <Navbar />
