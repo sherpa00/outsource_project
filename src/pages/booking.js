@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useRef, useState } from "react";
 import { toast } from "react-toastify";
 import emailjs from "@emailjs/browser";
@@ -6,6 +7,13 @@ import { db } from "firebase.configs";
 
 function Booking() {
     return (
+        <>
+        <Head>
+            <title>Get a Booking</title>
+            <meta name="description" content="Get a booking with us to evaluate a quote for your cleanng services requirements with us." />
+            <meta name="viewport" content="width=device-width,initial-scale=1" />
+            <meta name="keywords" content="booking services, booking cleaning services, booking cleaning services company in australia, quote for cleaing company in australia, get a quote,book a cleaning services in au" />
+        </Head>
         <div id="booking-container">
             <h2>
                 Book Now for instant <span>Quote</span>
@@ -18,6 +26,7 @@ function Booking() {
             </h3>
             <BookingForm />
         </div>
+        </>
     )
 }
 

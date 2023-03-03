@@ -1,3 +1,4 @@
+import Head from "next/head";
 import ContactUs from "@/components/contact";
 import Faq from "@/components/faq";
 import { useRouter } from "next/router";
@@ -12,6 +13,12 @@ function FaqPage() {
 
     return (
         <>
+        <Head>
+            <title>About Us</title>
+            <meta name="description" content="read our frequently asked questions about cleaning services in australia." />
+            <meta name="viewport" content="width=device-width,initial-scale=1" />
+            <meta name="keywords" content="faqs,faq, frequently asked questions about cleaning services, questions about cleaning services in australia" />
+        </Head>
             <div id="faq-page-container">
                 <h2>
                     Frequently Asked <span>Questions</span>

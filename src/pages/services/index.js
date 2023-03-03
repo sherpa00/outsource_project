@@ -1,3 +1,4 @@
+import Head from "next/head";
 import ContactUs from "@/components/contact";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -44,6 +45,12 @@ const servicesData = [
 function Services() {
     return (
         <>
+        <Head>
+            <title>Our Services</title>
+            <meta name="description" content="Getting to know more about us as a cleaning services located in Australia providing Major Cleaning services like Home cleaning, Office cleaning, School cleaning and many more." />
+            <meta name="viewport" content="width=device-width,initial-scale=1" />
+            <meta name="keywords" content="our services, cleaning services available, cleaning services company in australia, cleaning services in au" />
+        </Head>
             <div id="services">
                 <h2>Our <span>Services</span></h2>
                 <p>

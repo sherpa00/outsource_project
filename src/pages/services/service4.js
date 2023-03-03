@@ -1,3 +1,4 @@
+import Head from "next/head";
 import ContactUs from "@/components/contact";
 import ServiceStyle from "@/styles/Services.module.css";
 import Image from "next/image";
@@ -7,6 +8,13 @@ import HowToBook from "@/components/howtobook";
 
 function Service4Page() {
     return (
+        <>
+        <Head>
+            <title>Service4</title>
+            <meta name="description" content="more info about the service4 cleaing services in our company in australia" />
+            <meta name="viewport" content="width=device-width,initial-scale=1" />
+            <meta name="keywords" content="service4 , service4 in australia, service4 cleaning services company in australia, service4 cleaing company in australia, service4 cleaning services in au" />
+        </Head>
         <div className={ServiceStyle.container}>
             <Image 
                 src="/services_header.jpg"
@@ -93,6 +101,7 @@ function Service4Page() {
             <HowToBook />
             <ContactUs />
         </div>
+        </>
     )
 }
 

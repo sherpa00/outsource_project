@@ -1,3 +1,5 @@
+import Head from "next/head"
+
 const privacyPolicyData = [
     {
         name: "Privacy Policy",
@@ -38,6 +40,12 @@ const privacyPolicyData = [
 
 function PrivacyPolicy() {
     return (
+        <>
+        <Head>
+            <title>Privacy Policy</title>
+            <meta name="viewport" content="width=device-width,initial-scale=1" />
+            <meta name="keywords" content="privacy policies, privacy polic in cleaning services, privacy policy australia" />
+        </Head>
         <div id="privacy-policy-container">
             <h2>
                 <span>Our</span> Privacy Policy
@@ -54,6 +62,7 @@ function PrivacyPolicy() {
                 }
             </div>
         </div>
+        </>
     )
 }
 

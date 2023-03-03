@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Image from "next/image";
 import {RiCustomerService2Fill} from "react-icons/ri";
 import {HiUserGroup} from "react-icons/hi";
@@ -7,6 +8,12 @@ import ContactUs from "@/components/contact";
 function AboutUs() {
     return (
         <>
+        <Head>
+            <title>About Us</title>
+            <meta name="description" content="Getting to know more about us as a cleaning service located in Australia providing Major Cleaning services like Home cleaning, Office cleaning, School cleaning and many more." />
+            <meta name="viewport" content="width=device-width,initial-scale=1" />
+            <meta name="keywords" content="about our company, about us, cleaning services company in australia, cleaing company in australia, cleaning services in au" />
+        </Head>
             <div id="about-us">
                 <Image
                     src="/services.webp"

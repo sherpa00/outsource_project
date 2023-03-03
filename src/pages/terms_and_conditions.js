@@ -1,3 +1,4 @@
+import Head from "next/head"
 import ContactUs from "@/components/contact"
 
 const terms_and_conditions_data = [
@@ -83,6 +84,12 @@ const terms_and_conditions_data = [
 
 function TermsAndConditios() {
     return (
+        <>
+        <Head>
+            <title>Terms and Conditions</title>
+            <meta name="viewport" content="width=device-width,initial-scale=1" />
+            <meta name="keywords" content="terms and conditions, terms and conditions in australia" />
+        </Head>
         <div id="terms_and_conditions_container">
             <h2>
                 <span>Our</span> Terms and Conditions
@@ -100,6 +107,7 @@ function TermsAndConditios() {
             </div>
             <ContactUs />
         </div>
+        </>
     )
 };
 
