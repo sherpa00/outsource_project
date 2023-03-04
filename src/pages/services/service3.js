@@ -18,10 +18,11 @@ function Service3Page() {
         <div className={ServiceStyle.container}>
             <Image 
                 src="/services_header.jpg"
-                alt="an animated couple cleaning thier room for others"
+                alt="a group of cleaners cleaning offics spaces collectively"
                 width={400}
                 height={400}
                 className={ServiceStyle.header_image}
+                title="Photo by Adi Wahid from Unsplash"
             />
             <h2 className={ServiceStyle.header_text}>
                 Service 3
