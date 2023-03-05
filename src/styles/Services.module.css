@@ -9,7 +9,9 @@
 
 .header_image {
     width: 80%;
-    height: auto;
+    height: 70vh;
+    object-fit: cover;
+    border-radius: 5px;
 }
 
 .header_text {
@@ -100,7 +102,7 @@
 
 @media screen and (max-width: 1200px) {
     .header_image {
-        width: 65%;
+        width: 80%;
     }
 
     .header_text {
@@ -139,7 +141,8 @@
 
 @media screen and (max-width: 800px) {
     .header_image {
-        width: 70%;
+        width: 80%;
+        height: auto;
     }
 
     .header_text {
@@ -179,7 +182,7 @@
 
 @media screen and (max-width: 500px) {
     .header_image {
-        width: 80%;
+        width: 90%;
     }
 
     .header_text {

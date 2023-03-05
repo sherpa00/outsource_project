@@ -2,47 +2,52 @@ import Head from "next/head";
 import ContactUs from "@/components/contact";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { useAnimation,motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { useEffect } from "react";
 
 const servicesData = [
     {
-        title: "Service1",
+        title: "House Cleaning",
         desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce pharetra a metus ut placerat. Phasellus hendrerit vitae urna vitae pharetra. Curabitur sit amet pharetra eros, et vestibulum erat. Vestibulum non pharetra orci, eget gravida tellus. Nam sed ligula odio. In hac habitasse platea dictumst",
         position: "left",
-        linkSrc: "/services/service1",
-        imgSrc : "/services1.webp",
-        alt: "animated people working in cleaning services",
+        linkSrc: "/services/house-cleaning",
+        imgSrc : "/house_cleaning1.jpg",
+        alt: "a women cleanig window of a house with sprays and gloves",
         id: "1"
     },
     {
-        title: "Service2",
+        title: "Office Cleaning",
         desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce pharetra a metus ut placerat. Phasellus hendrerit vitae urna vitae pharetra. Curabitur sit amet pharetra eros, et vestibulum erat. Vestibulum non pharetra orci, eget gravida tellus. Nam sed ligula odio. In hac habitasse platea dictumst",
         position: "right",
-        linkSrc: "/services/service2",
-        imgSrc : "/services2.webp",
-        alt: "animated people working in cleaning services",
+        linkSrc: "/services/office-cleaning",
+        imgSrc : "/office_cleaning.jpg",
+        alt: "a man cleaning office spaces alone",
         id: 2
     },
     {
-        title: "Service3",
+        title: "Hospital Cleaning",
         desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce pharetra a metus ut placerat. Phasellus hendrerit vitae urna vitae pharetra. Curabitur sit amet pharetra eros, et vestibulum erat. Vestibulum non pharetra orci, eget gravida tellus. Nam sed ligula odio. In hac habitasse platea dictumst",
         position: "left",
-        linkSrc: "/services/service3",
-        imgSrc : "/services1.webp",
-        alt: "animated people working in cleaning services",
+        linkSrc: "/services/hospital-cleaning",
+        imgSrc : "/hospital_cleaning.jpg",
+        alt: "a person cleaning a hospital equipments",
         id: 3
     },
     {
-        title: "Service4",
+        title: "Commercial Cleaning",
         desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce pharetra a metus ut placerat. Phasellus hendrerit vitae urna vitae pharetra. Curabitur sit amet pharetra eros, et vestibulum erat. Vestibulum non pharetra orci, eget gravida tellus. Nam sed ligula odio. In hac habitasse platea dictumst",
         position: "right",
-        linkSrc: "/services/service4",
-        imgSrc : "/services2.webp",
-        alt: "animated people working in cleaning services",
+        linkSrc: "/services/commercial-cleaning",
+        imgSrc : "/commercial_cleaning.jpg",
+        alt: "a person mopping and cleanig floor",
         id: 4
     }
 ]
 
 function Services() {
+
+
     return (
         <>
         <Head>
@@ -88,8 +93,28 @@ function ServiceDetails({title,desc,position,linkSrc,imgSrc,alt}) {
         router.push(linkSrc);
     }
 
+    const control = useAnimation();
+    const [ref,inView] = useInView();
+
+    const animationVariants0 = {
+        hidden: {opacity: 0},
+        visible: {opacity: 1, transition: {duration: 0.8}}
+    }
+
+    useEffect(() => {
+        if (inView) {
+            control.start("visible");
+        }
+    },[control,inView]);
+
     return (
-        <div className={className}>
+        <motion.div 
+            className={className}
+            ref={ref}
+            animate={control}
+            variants={animationVariants0}
+            initial="hidden"
+        >
                     <Image 
                         src={imgSrc}
                         width={400}
@@ -107,7 +132,7 @@ function ServiceDetails({title,desc,position,linkSrc,imgSrc,alt}) {
                             Read More
                         </button>
                     </div>
-        </div>
+        </motion.div>
     )
 }
 

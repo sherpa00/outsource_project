@@ -6,36 +6,35 @@ import {MdCleaningServices,MdDryCleaning,MdCleanHands,MdOutlineHomeWork} from "r
 import {GiVacuumCleaner,GiBroom} from "react-icons/gi"
 import HowToBook from "@/components/howtobook";
 
-function Service2Page() {
+function Service4Page() {
     return (
         <>
         <Head>
-            <title>Service2</title>
-            <meta name="description" content="more info about the service2 cleaing services in our company in australia" />
+            <title>Service4</title>
+            <meta name="description" content="more info about the service4 cleaing services in our company in australia" />
             <meta name="viewport" content="width=device-width,initial-scale=1" />
-            <meta name="keywords" content="service2 , service2 in australia, service2 cleaning services company in australia, service2 cleaing company in australia, service2 cleaning services in au" />
+            <meta name="keywords" content="service4 , service4 in australia, service4 cleaning services company in australia, service4 cleaing company in australia, service4 cleaning services in au" />
         </Head>
         <div className={ServiceStyle.container}>
             <Image 
-                src="/services_header.jpg"
-                alt="a group of cleaners cleaning offics spaces collectively"
+                src="/commercial_cleaning_header.jpg"
+                alt="an animated couple cleaning thier room for others"
                 width={400}
                 height={400}
                 className={ServiceStyle.header_image}
-                title="Photo by Adi Wahid from Unsplash"
             />
             <h2 className={ServiceStyle.header_text}>
-                Service 2
+                Commercial Cleaning
             </h2>
             <p className={ServiceStyle.header_text_paragraph}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis egestas, odio sed tempor aliquam, orci sapien sagittis erat, sed accumsan purus libero vitae va sed enim mattis lacinia. Phasellus id augue cursus, tempus magna sit amet, blandit felis. Pellentesque id consectetur Vestibulum orci ante, congue et nisl quis, vulputate aliquam turpis. Mauris condimentum arcu id diam dignissim, sed gravida lectus fringilla. Aliquam blandit vitae ante eget faucibus. Duis egestas, odio sed tempor aliquam, orci sapien sagittis erat, sed accumsan purus libero vitae velit. Aliquam pellentesque magna sed enim mattis lacinia. Phasellus id augue cursus, tempus magna sit amet, blandit felis. Pellentesque id consectetur justo, eu mattis ante. Cras eget elit in nibh scelerisque finibus at a mauris. Praesent ultricies, justo non sodales gravida, mauris mauris venenatis tortor, non tempus tellus purus vel diam. Maecenas sed suscipit arcu, vel pellentesque mi. Aenean vitae lorem ac erat vulputate laoreet a et justo. Cras vulputate nulla at arcu iaculis, quis tincidunt libero pulvinar. Suspendisse interdum molestie velit, eu finibus purus laoreet sed.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum orci ante, congue et nisl quis, vulputate  Mauris condimentum arcu id diam dignissim, sed gravida lectus fringilla. Aliquam blandit vitae ante eget faucibus. Duis egestas, odio sed tempor aliquam, orci sapien sagittis erat, sed accumsan purus libero vitae velit. Aliquam pellentesque magna sed enim mattis lacinia. Phasellus id augue cursus, tempus magna sit amet, blandit felis. Pellentesque id consectetur justo, eu mattis ante. Cras eget elit in nibh scelerisque finibus at a mauris. Praesent ultricies, justo non sodales gravida, mauris mauris venenatis tortor, non tempus tellus purus vel diam. Maecenas sed suscipit arcu, vel pellentesque mi. Aenean vitae lorem ac erat vulputate laoreet a et justo. Cras vulputate nulla at arcu iaculis, quis tincidunt libero pulvinar. Suspendisse interdum molestie velit, eu finibus purus laoreet sed.
             </p>
             <h3 className={ServiceStyle.included_header}>
                 What is included here?
             </h3>
             <p className={ServiceStyle.included_header_text}>
                 Lorem ipsum dogue cursus, t
-                empus magna sit amet, blandit felis. Pellenteus at a mauris. Praesent ultricies, justo non sodales gravida, mauris mauris venenatis tortor, non tempus tellus purus vel dias dlfkjdls fkldjskl sed suscipit arcu, vel pellentesque mi.
+                empus magna sit amet, blandit felis. Pellenteus at a mauris. Praesent ultricies, justo non sodales s mauris venenatis tortor, non tempus tellus purus vel diam. Maecenas sed suscipit arcu, vel pellentesque mi.
             </p>
             <ul className={ServiceStyle.included_list}>
                 
@@ -106,4 +105,4 @@ function Service2Page() {
     )
 }
 
-export default Service2Page;
+export default Service4Page;

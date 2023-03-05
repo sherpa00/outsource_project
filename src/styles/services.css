@@ -34,7 +34,8 @@ div#services div#services-details-list {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 200px;
+    margin-top: 100px;
 }
 
 div#services-details-list div.service-details {
@@ -42,7 +43,7 @@ div#services-details-list div.service-details {
     gap: 20px;
     width: 100%;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 }
 
 div#services-details-list div.left {
@@ -54,8 +55,10 @@ div#services-details-list div.right {
 }
 
 div.service-details img {
-    width: 45%;
+    width: 40%;
     height: auto;
+    border-radius: 10px;
+    filter:saturate(0.9)
 }
 
 div.service-details div {
@@ -110,6 +113,10 @@ div#services-details-list div.service-details div button:hover {
     div#services p {
         font-size: 18px;
     }
+
+    div#services div#services-details-list {
+        gap: 150px;
+    }
     div#services div#services-details-list div.service-details div h3 {
         font-size: 22px;
     }
@@ -133,6 +140,7 @@ div#services-details-list div.service-details div button:hover {
     }
     div#services div#services-details-list  {
         flex-direction: column;
+        gap: 100px;
     }
 
     div#services div#services-details-list div.service-detials {
@@ -184,8 +192,12 @@ div#services-details-list div.service-details div button:hover {
         font-size: 14px;
         width: 85%;
     }
+    div#services div#services-details-list {
+        gap: 60px;
+    }
+
     div#services div#services-details-list div.service-details img {
-        width: 65%;
+        width: 80%;
     }
     div#services div#services-details-list div.service-details div {
         width: 90%;
