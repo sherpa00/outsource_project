@@ -20,7 +20,7 @@ function Booking() {
             </h2>
             <p>
             Lorem ipsum dolor sit amet, consectetur kadn kjdka fkda kjdfa fkjdask ante lorem imperdiet est, at venenatis orci lacus id mi. 
-            </p>  
+            </p>
             <h3>
                 Fill Below Form
             </h3>

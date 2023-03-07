@@ -102,7 +102,7 @@ function Services() {
                         animate={control}
                     >
                         <span>&#127981;</span>
-                        <h3>Constuction Cleaning</h3>
+                        <h3>Commercial Cleaning</h3>
                     </motion.div>
                     <motion.div
                         className="service"

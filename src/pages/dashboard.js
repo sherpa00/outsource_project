@@ -275,6 +275,7 @@ function BookingDashboard() {
 function SingleOrder({name,id,address,email,phone,package_type,status,ordered_on,complete_on,onUpdateStatus,onDeleteBooking}) {
 
   const [showBtns,setShowBtns] = useState(false);
+
   const bookingRef = useRef();
 
   const showActionsBtns = () => {
@@ -295,6 +296,38 @@ function SingleOrder({name,id,address,email,phone,package_type,status,ordered_on
     const deleteSingleBooking = () => {
         onDeleteBooking(id);
     }
+
+
+    // here show button status group according to order's status
+    let btnGroupBasedOnStatus;
+    if (status === "ongoing") {
+      btnGroupBasedOnStatus = <>
+                                  <button id="accept" value="accepted" onClick={updateToStatus}>
+                                      Accept
+                                  </button>
+                                  <button id="reject" value="rejected" onClick={updateToStatus}>
+                                      Reject
+                                  </button>
+                              </>
+    } else if (status === "completed") {
+      btnGroupBasedOnStatus = <>
+
+                              </>
+    } else if (status === "accepted") {
+      btnGroupBasedOnStatus = <>
+                                  <button id="reject" value="rejected" onClick={updateToStatus}>
+                                      Reject
+                                  </button>
+
+                                  <button id="completed" value="completed" onClick={updateToStatus}>
+                                      Completed
+                                  </button>
+                              </>
+    } else if (status === "rejected") {
+      btnGroupBasedOnStatus = <>
+                                  
+                              </>
+    } 
 
     return (
         <div className={"single_order" + " " + status} ref={bookingRef} onClick={showActionsBtns}>
@@ -330,18 +363,9 @@ function SingleOrder({name,id,address,email,phone,package_type,status,ordered_on
               !showBtns ? null :
                 <>
                   <div id="actions_list">
-                    <button id="accept" value="accepted" onClick={updateToStatus}>
-                        Accept
-                    </button>
-                    <button id="reject" value="rejected" onClick={updateToStatus}>
-                        Reject
-                    </button>
-                    <button id="ongoing" value="ongoing" onClick={updateToStatus}>
-                        Ongoing
-                    </button>
-                    <button id="completed" value="completed" onClick={updateToStatus}>
-                        Completed
-                    </button>
+                    {
+                      btnGroupBasedOnStatus
+                    }
                 </div>
                 <button id="delete_order" onClick={deleteSingleBooking}>
                     Delete Order
